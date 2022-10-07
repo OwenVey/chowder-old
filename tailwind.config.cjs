@@ -26,8 +26,8 @@ module.exports = {
       colors: {
         gray: radixColors.gray,
         grayDark: radixColors.grayDark,
-        primary: radixColors.blue,
-        primaryDark: radixColors.blueDark,
+        primary: radixColors.grass,
+        primaryDark: radixColors.grassDark,
       },
     }),
   ],
