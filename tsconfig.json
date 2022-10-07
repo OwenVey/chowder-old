@@ -17,10 +17,18 @@
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["src/components/*"],
-      "@/public/*": ["public/*"]
+      "@/*": ["src/*"],
+      "#/public/*": ["public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs",
+    "radix-plugin.ts",
+    "radix-plugin.cts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,10 +1,11 @@
 // src/pages/_app.tsx
-import '../styles/globals.css';
+import '@/styles/globals.css';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import type { AppType } from 'next/app';
 import { trpc } from '../utils/trpc';
 import Layout from '../components/Layout';
+import { ThemeProvider } from 'next-themes';
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -12,9 +13,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <ThemeProvider attribute="class">
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     </SessionProvider>
   );
 };
