@@ -9,7 +9,7 @@ const windyRadixPalette = plugin.withOptions(
 
     for (const [colorName, colorObj] of Object.entries(colors)) {
       const colorMap = colorName.includes('Dark') ? darkModeColors : rootColors;
-      Object.entries(colorObj).forEach(([key, value], index) => {
+      Object.entries(colorObj).forEach(([, value], index) => {
         const colorNameWithoutDark = colorName.replace('Dark', '');
         const hsl = /\(([^)]+)\)/.exec(value).pop().replaceAll(',', '');
         colorMap[`--${colorNameWithoutDark}${index + 1}`] = hsl;
@@ -29,7 +29,7 @@ const windyRadixPalette = plugin.withOptions(
     for (const [colorName, colorObj] of Object.entries(colors)) {
       if (!colorName.includes('Dark')) {
         const themeColor = {};
-        Object.entries(colorObj).forEach(([key, value], index) => {
+        Object.entries(colorObj).forEach(([], index) => {
           themeColor[index + 1] = `hsl(var(--${colorName}${index + 1}) / <alpha-value>)`;
         });
 

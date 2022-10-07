@@ -1,18 +1,18 @@
 export default function Settings() {
   return (
     <div className="inline-flex bg-gray-9 p-6">
-      <div className="bg-primary-1 h-20 w-20"></div>
-      <div className="bg-primary-2 h-20 w-20"></div>
-      <div className="bg-primary-3 h-20 w-20"></div>
-      <div className="bg-primary-4 h-20 w-20"></div>
-      <div className="bg-primary-5 h-20 w-20"></div>
-      <div className="bg-primary-6 h-20 w-20"></div>
-      <div className="bg-primary-7 h-20 w-20"></div>
-      <div className="bg-primary-8 h-20 w-20"></div>
-      <div className="bg-primary-9 h-20 w-20"></div>
-      <div className="bg-primary-10 h-20 w-20"></div>
-      <div className="bg-primary-11 h-20 w-20"></div>
-      <div className="bg-primary-12 h-20 w-20"></div>
+      <div className="h-20 w-20 bg-primary-1"></div>
+      <div className="h-20 w-20 bg-primary-2"></div>
+      <div className="h-20 w-20 bg-primary-3"></div>
+      <div className="h-20 w-20 bg-primary-4"></div>
+      <div className="h-20 w-20 bg-primary-5"></div>
+      <div className="h-20 w-20 bg-primary-6"></div>
+      <div className="h-20 w-20 bg-primary-7"></div>
+      <div className="h-20 w-20 bg-primary-8"></div>
+      <div className="h-20 w-20 bg-primary-9"></div>
+      <div className="h-20 w-20 bg-primary-10"></div>
+      <div className="h-20 w-20 bg-primary-11"></div>
+      <div className="h-20 w-20 bg-primary-12"></div>
     </div>
   );
 }
