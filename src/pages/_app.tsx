@@ -7,7 +7,7 @@ import { trpc } from '../utils/trpc';
 import Layout from '../components/Layout';
 import { ThemeProvider } from 'next-themes';
 
-const MyApp: AppType<{ session: Session | null }> = ({
+const App: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
@@ -22,4 +22,4 @@ const MyApp: AppType<{ session: Session | null }> = ({
   );
 };
 
-export default trpc.withTRPC(MyApp);
+export default trpc.withTRPC(App);

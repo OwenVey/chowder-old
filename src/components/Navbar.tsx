@@ -39,7 +39,7 @@ export default function Navbar() {
             <div className="relative flex h-16 justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button */}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-9 hover:bg-gray-3 hover:text-gray-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-9">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-9 hover:bg-gray-3 hover:text-gray-11">
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
@@ -74,7 +74,7 @@ export default function Navbar() {
                   <Menu as="div" className="relative">
                     <div>
                       {sessionData?.user && (
-                        <Menu.Button className="flex rounded-full text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-9 focus-visible:ring-offset-2">
+                        <Menu.Button className="flex rounded-full text-sm">
                           {sessionData?.user.image && (
                             <Image
                               className="h-8 w-8 rounded-full"
@@ -96,7 +96,7 @@ export default function Navbar() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md border border-gray-7 bg-gray-1 py-1 shadow-lg focus-visible:outline-none">
+                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md border border-gray-7 bg-gray-1 py-1 shadow-lg">
                         <Menu.Item as="div">
                           {({ active }) => (
                             <Link href="/settings">
@@ -130,7 +130,7 @@ export default function Navbar() {
                 ) : (
                   <button
                     type="button"
-                    className="rounded-full p-1 text-gray-9 hover:text-gray-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-9 focus-visible:ring-offset-2"
+                    className="rounded-full p-1 text-gray-9 focus-within:ring-offset-gray-1 hover:text-gray-11"
                     onClick={() => signIn()}
                   >
                     <ArrowRightOnRectangleIcon className="h-6 w-6" aria-hidden="true" />
