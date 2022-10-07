@@ -4,10 +4,10 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import Image from 'next/future/image';
 import Link from 'next/link';
 import { Bars3Icon, XMarkIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
-import classNames from 'classnames';
-import ActiveLink from './ActiveLink';
+import clsx from 'clsx';
 import Logo from '@/components/Logo';
 import ThemeToggler from '@/components/ThemeToggler';
+import { useRouter } from 'next/router';
 
 export default function Navbar() {
   const links = [
@@ -30,6 +30,7 @@ export default function Navbar() {
   ];
 
   const { data: sessionData } = useSession();
+  const router = useRouter();
 
   return (
     <Disclosure as="nav" className="border-b border-gray-6 bg-gray-1">
@@ -53,16 +54,18 @@ export default function Navbar() {
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   {links.map((link) => (
-                    <ActiveLink
-                      key={link.name}
-                      href={link.to}
-                      activeClassName="border-primary-9 text-gray-12"
-                      inactiveClassName="border-transparent text-gray-11 hover:border-gray-7 hover:text-gray-12"
-                    >
-                      <a className="inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium">
+                    <Link key={link.name} href={link.to}>
+                      <a
+                        className={clsx(
+                          router.pathname === link.to
+                            ? 'border-primary-9 text-gray-12'
+                            : 'border-transparent text-gray-11 hover:border-gray-7 hover:text-gray-12',
+                          'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium',
+                        )}
+                      >
                         {link.name}
                       </a>
-                    </ActiveLink>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -101,7 +104,7 @@ export default function Navbar() {
                           {({ active }) => (
                             <Link href="/settings">
                               <a
-                                className={classNames(
+                                className={clsx(
                                   active ? 'bg-gray-4 text-gray-12' : 'text-gray-11',
                                   'block px-4 py-2 text-sm',
                                 )}
@@ -114,7 +117,7 @@ export default function Navbar() {
                         <Menu.Item>
                           {({ active }) => (
                             <button
-                              className={classNames(
+                              className={clsx(
                                 active ? 'bg-gray-4 text-gray-12' : 'text-gray-11',
                                 'flex w-full px-4 py-2 text-sm',
                               )}
@@ -143,19 +146,19 @@ export default function Navbar() {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 pt-2 pb-4">
               {links.map((link) => (
-                <ActiveLink
-                  key={link.name}
-                  href={link.to}
-                  activeClassName="bg-primary-3 border-primary-9 text-primary-11"
-                  inactiveClassName="border-transparent text-gray-11 hover:bg-gray-4 hover:border-gray-8 hover:text-gray-12"
-                >
+                <Link key={link.name} href={link.to}>
                   <Disclosure.Button
                     as="a"
-                    className="block border-l-4 py-2 pl-3 pr-4 text-base font-medium"
+                    className={clsx(
+                      router.pathname === link.to
+                        ? 'border-primary-9 bg-primary-3 text-primary-11'
+                        : 'border-transparent text-gray-11 hover:border-gray-8 hover:bg-gray-4 hover:text-gray-12',
+                      'block border-l-4 py-2 pl-3 pr-4 text-base font-medium',
+                    )}
                   >
                     {link.name}
                   </Disclosure.Button>
-                </ActiveLink>
+                </Link>
               ))}
             </div>
           </Disclosure.Panel>

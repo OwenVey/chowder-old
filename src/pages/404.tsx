@@ -39,15 +39,15 @@ export default function Error404() {
         </main>
         <footer className="mx-auto w-full max-w-7xl flex-shrink-0 px-4 sm:px-6 lg:px-8">
           <nav className="flex justify-center space-x-4">
-            <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-600">
+            <a href="#" className="text-sm font-medium text-gray-11 hover:text-gray-12">
               Contact Support
             </a>
-            <span className="inline-block border-l border-gray-300" aria-hidden="true" />
-            <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-600">
+            <span className="inline-block border-l border-gray-6" aria-hidden="true" />
+            <a href="#" className="text-sm font-medium text-gray-11 hover:text-gray-12">
               Status
             </a>
-            <span className="inline-block border-l border-gray-300" aria-hidden="true" />
-            <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-600">
+            <span className="inline-block border-l border-gray-6" aria-hidden="true" />
+            <a href="#" className="text-sm font-medium text-gray-11 hover:text-gray-12">
               Twitter
             </a>
           </nav>
