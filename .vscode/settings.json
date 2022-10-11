@@ -9,5 +9,8 @@
   },
   "editor.quickSuggestions": {
     "strings": true
+  },
+  "[shellscript][dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   }
 }
