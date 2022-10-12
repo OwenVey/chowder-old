@@ -1,20 +1,24 @@
 import Head from 'next/head';
 import React from 'react';
 import Navbar from '@/components/Navbar';
+import { useRouter } from 'next/router';
 
 type Props = {
   children: React.ReactNode;
 };
 
 const Layout = ({ children }: Props) => {
+  const router = useRouter();
+  const showNavbar = router.pathname === '/signin' ? false : true;
+
   return (
     <>
       <Head>
         <title>Chowder</title>
       </Head>
 
-      <Navbar />
-      <main className="p-4">{children}</main>
+      {showNavbar && <Navbar />}
+      <main className="h-full">{children}</main>
     </>
   );
 };

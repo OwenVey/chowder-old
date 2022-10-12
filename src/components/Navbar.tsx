@@ -121,7 +121,7 @@ export default function Navbar() {
                                 active ? 'bg-gray-4 text-gray-12' : 'text-gray-11',
                                 'flex w-full px-4 py-2 text-sm',
                               )}
-                              onClick={() => signOut()}
+                              onClick={() => signOut({ callbackUrl: '/signin' })}
                             >
                               Sign out
                             </button>
