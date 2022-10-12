@@ -18,7 +18,7 @@ const Layout = ({ children }: Props) => {
       </Head>
 
       {showNavbar && <Navbar />}
-      <main className="h-full">{children}</main>
+      <main className="grow">{children}</main>
     </>
   );
 };
