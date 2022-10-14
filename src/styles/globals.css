@@ -16,12 +16,12 @@
 }
 
 @tailwind base;
-@layer base {
+/* @layer base {
   button:focus-visible,
   a:focus-visible {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-9;
   }
-}
+} */
 @tailwind components;
 @tailwind utilities;
 
