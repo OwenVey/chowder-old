@@ -122,7 +122,7 @@ export default function Sidebar() {
                   Settings
                 </DropdownItem>
                 <DropdownItem
-                  onClick={() => console.log('test')}
+                  onClick={() => signOut({ callbackUrl: '/signin' })}
                   icon={<ArrowLeftOnRectangleIcon />}
                 >
                   Sign Out
