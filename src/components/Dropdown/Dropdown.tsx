@@ -25,9 +25,9 @@ export default function Dropdown({ align = 'end', trigger, children }: Props) {
                 animate={{
                   scale: 1,
                   opacity: 1,
-                  transition: { type: 'spring', duration: 0.3 },
+                  transition: { type: 'spring', duration: 0.3, bounce: 0 },
                 }}
-                exit={{ scale: 0, opacity: 0, transition: { duration: 0.1 } }}
+                exit={{ scale: 0, opacity: 0, transition: { duration: 0.1, bounce: 0 } }}
               >
                 {children}
               </motion.div>
