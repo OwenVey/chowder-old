@@ -1,24 +1,13 @@
-import { Bars3CenterLeftIcon } from '@heroicons/react/24/outline';
 import ThemeToggler from '@/components/ThemeToggler';
 import Logo from '@/components/Logo';
 import Search from '@/components/Search';
+import MobileSidebar from '@/components/MobileSidebar';
 
-type Props = {
-  setSidebarOpen: (open: boolean) => void;
-};
-
-export default function MobileHeader({ setSidebarOpen }: Props) {
+export default function MobileHeader() {
   return (
     <header className="sticky top-0 z-10 flex h-16 flex-wrap items-center justify-between border-b border-gray-6 bg-gray-1 px-4 sm:px-6 lg:hidden">
       <div className="mr-6 flex lg:hidden">
-        <button
-          type="button"
-          className="text-gray-11 lg:hidden"
-          onClick={() => setSidebarOpen(true)}
-        >
-          <span className="sr-only">Open sidebar</span>
-          <Bars3CenterLeftIcon className="h-6 w-6" aria-hidden="true" />
-        </button>
+        <MobileSidebar />
       </div>
 
       <div className="relative flex flex-grow basis-0 items-center">
