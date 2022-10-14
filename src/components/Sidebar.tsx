@@ -7,9 +7,9 @@ import Image from 'next/future/image';
 import ThemeToggler from '@/components/ThemeToggler';
 import { navigation, tags } from '@/utils/mocks';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { signOut, useSession } from 'next-auth/react';
-import Dropdown from './Dropdown';
+import { Dropdown, DropdownItem } from '@/components/Dropdown';
 
 export default function Sidebar() {
   const router = useRouter();
@@ -31,26 +31,26 @@ export default function Sidebar() {
         <nav className="mt-6 px-3">
           <div className="space-y-1">
             {navigation.map((item) => (
-              <Link key={item.name} href={item.href}>
-                <a
+              <Link
+                key={item.name}
+                href={item.href}
+                className={clsx(
+                  item.href === router.pathname
+                    ? 'bg-gray-5 text-gray-12'
+                    : 'text-gray-11 hover:bg-gray-1 hover:text-gray-12',
+                  'group flex items-center rounded-md px-2 py-2 text-sm font-medium',
+                )}
+              >
+                <item.icon
                   className={clsx(
                     item.href === router.pathname
-                      ? 'bg-gray-5 text-gray-12'
-                      : 'text-gray-11 hover:bg-gray-1 hover:text-gray-12',
-                    'group flex items-center rounded-md px-2 py-2 text-sm font-medium',
+                      ? 'text-gray-11'
+                      : 'text-gray-9 group-hover:text-gray-10',
+                    'mr-3 h-6 w-6 flex-shrink-0',
                   )}
-                >
-                  <item.icon
-                    className={clsx(
-                      item.href === router.pathname
-                        ? 'text-gray-11'
-                        : 'text-gray-9 group-hover:text-gray-10',
-                      'mr-3 h-6 w-6 flex-shrink-0',
-                    )}
-                    aria-hidden="true"
-                  />
-                  {item.name}
-                </a>
+                  aria-hidden="true"
+                />
+                {item.name}
               </Link>
             ))}
           </div>
@@ -117,19 +117,17 @@ export default function Sidebar() {
                     <Cog6ToothIcon className="h-6 w-6 rounded-full text-gray-9 hover:text-gray-10" />
                   </button>
                 }
-                items={[
-                  {
-                    label: 'Settings',
-                    onClick: () => console.log('Four'),
-                    icon: <AdjustmentsHorizontalIcon />,
-                  },
-                  {
-                    label: 'Log Out',
-                    onClick: () => signOut({ callbackUrl: '/signin' }),
-                    icon: <ArrowLeftOnRectangleIcon />,
-                  },
-                ]}
-              />
+              >
+                <DropdownItem as={Link} href="/settings" icon={<AdjustmentsHorizontalIcon />}>
+                  Settings
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => console.log('test')}
+                  icon={<ArrowLeftOnRectangleIcon />}
+                >
+                  Sign Out
+                </DropdownItem>
+              </Dropdown>
             </div>
           </div>
         </div>
