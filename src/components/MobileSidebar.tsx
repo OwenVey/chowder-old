@@ -69,7 +69,7 @@ export default function MobileSidebar() {
                           href={item.href}
                           className={clsx(
                             item.href === router.pathname
-                              ? 'bg-gray-4 text-gray-12'
+                              ? 'bg-primary-9 text-white'
                               : 'text-gray-11 hover:bg-gray-2 hover:text-gray-12',
                             'group flex items-center rounded-md px-2 py-2 text-base font-medium leading-5',
                           )}
@@ -77,7 +77,7 @@ export default function MobileSidebar() {
                           <item.icon
                             className={clsx(
                               item.href === router.pathname
-                                ? 'text-gray-11'
+                                ? 'text-white'
                                 : 'text-gray-9 group-hover:text-gray-10',
                               'mr-3 h-6 w-6 flex-shrink-0',
                             )}
