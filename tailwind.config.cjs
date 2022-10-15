@@ -30,6 +30,12 @@ module.exports = {
         grayDark: radixColors.grayDark,
         primary: radixColors.grass,
         primaryDark: radixColors.grassDark,
+        red: radixColors.red,
+        redDark: radixColors.redDark,
+        blue: radixColors.blue,
+        blueDark: radixColors.blueDark,
+        green: radixColors.green,
+        greenDark: radixColors.greenDark
       },
     }),
   ],

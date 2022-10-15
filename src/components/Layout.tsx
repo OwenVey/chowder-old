@@ -24,7 +24,7 @@ const Layout = ({ children }: Props) => {
         <>
           <Sidebar />
           <MobileHeader />
-          {children}
+          <div className="flex min-w-0 flex-1 flex-col overflow-auto">{children}</div>
         </>
       )}
     </>

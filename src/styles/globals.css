@@ -27,6 +27,6 @@
 
 @layer components {
   #__next {
-    @apply flex min-h-full flex-col lg:flex-row;
+    @apply flex h-full flex-col lg:flex-row;
   }
 }
