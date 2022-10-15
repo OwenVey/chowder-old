@@ -13,7 +13,7 @@ export default function Recipes() {
             <h1 className="text-lg font-medium text-gray-12">Recipes</h1>
             <div className="text-sm text-gray-11">5 Recipes</div>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center gap-1">
             <IconButton icon={<MagnifyingGlassIcon />} />
             <IconButton icon={<FunnelIcon />} />
             <IconButton icon={<PlusIcon />} />
