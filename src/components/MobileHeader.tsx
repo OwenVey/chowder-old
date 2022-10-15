@@ -1,7 +1,4 @@
-import ThemeToggler from '@/components/ThemeToggler';
-import Logo from '@/components/Logo';
-import Search from '@/components/Search';
-import MobileSidebar from '@/components/MobileSidebar';
+import { ThemeToggler, Logo, Search, MobileSidebar } from '@/components';
 
 export default function MobileHeader() {
   return (

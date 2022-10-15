@@ -1,4 +1,4 @@
-import Logo from '@/components/Logo';
+import { Logo } from '@/components';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 

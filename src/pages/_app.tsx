@@ -3,8 +3,8 @@ import '@/styles/globals.css';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import type { AppType } from 'next/app';
-import { trpc } from '../utils/trpc';
-import Layout from '../components/Layout';
+import { trpc } from '@/utils/trpc';
+import { Layout } from '@/components';
 import { ThemeProvider } from 'next-themes';
 
 const App: AppType<{ session: Session | null }> = ({

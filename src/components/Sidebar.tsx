@@ -1,15 +1,11 @@
-import Search from '@/components/Search';
-import Logo from '@/components/Logo';
 import clsx from 'clsx';
 import { Cog6ToothIcon } from '@heroicons/react/24/outline';
 import { AdjustmentsHorizontalIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/20/solid';
 import Image from 'next/future/image';
-import ThemeToggler from '@/components/ThemeToggler';
 import { navigation, tags } from '@/utils/mocks';
 import { useRouter } from 'next/router';
-import Link from '@/components/Link';
 import { signOut, useSession } from 'next-auth/react';
-import { Dropdown, DropdownItem } from '@/components/Dropdown';
+import { IconButton, Dropdown, DropdownItem, Link, Search, Logo, ThemeToggler } from '@/components';
 
 export default function Sidebar() {
   const router = useRouter();
@@ -109,15 +105,9 @@ export default function Sidebar() {
               )}
             </div>
 
-            <div className="flex items-center space-x-1">
+            <div className="flex items-center">
               <ThemeToggler />
-              <Dropdown
-                trigger={
-                  <button className="rounded-full p-1">
-                    <Cog6ToothIcon className="h-6 w-6 rounded-full text-gray-9 hover:text-gray-10" />
-                  </button>
-                }
-              >
+              <Dropdown trigger={<IconButton icon={<Cog6ToothIcon />} />}>
                 <DropdownItem as={Link} href="/settings" icon={<AdjustmentsHorizontalIcon />}>
                   Settings
                 </DropdownItem>

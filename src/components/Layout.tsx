@@ -1,14 +1,13 @@
 import Head from 'next/head';
 import React from 'react';
-import Sidebar from '@/components/Sidebar';
-import MobileHeader from '@/components/MobileHeader';
+import { Sidebar, MobileHeader } from '@/components';
 import { useRouter } from 'next/router';
 
 type Props = {
   children: React.ReactNode;
 };
 
-const Layout = ({ children }: Props) => {
+export default function Layout({ children }: Props) {
   const router = useRouter();
   const isSigninPage = router.pathname === '/signin';
 
@@ -29,6 +28,4 @@ const Layout = ({ children }: Props) => {
       )}
     </>
   );
-};
-
-export default Layout;
+}

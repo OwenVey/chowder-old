@@ -1,12 +1,24 @@
 import { getAuthServerSideProps } from '@/server/common/get-auth-server-side-props';
+import { FunnelIcon, MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { GetServerSideProps } from 'next/types';
+import { IconButton } from '@/components';
 
 export default function Recipes() {
   return (
     <div className="relative z-0 flex flex-1 overflow-hidden">
       {/* Start first column (hidden on smaller screens) */}
       <aside className="flex w-full flex-shrink-0 flex-col overflow-y-auto border-r border-gray-6 sm:w-96">
-        <div className="border-b border-gray-6 p-4 text-gray-12">Header</div>
+        <div className="flex justify-between border-b border-gray-6 bg-gray-3 p-4">
+          <div>
+            <h1 className="text-lg font-medium text-gray-12">Recipes</h1>
+            <div className="text-sm text-gray-11">5 Recipes</div>
+          </div>
+          <div className="flex items-center">
+            <IconButton icon={<MagnifyingGlassIcon />} />
+            <IconButton icon={<FunnelIcon />} />
+            <IconButton icon={<PlusIcon />} />
+          </div>
+        </div>
         <div className="min-h-0 flex-1 overflow-y-auto p-4">
           <h1 className="text-gray-12">1. One</h1>
           <p className="text-gray-11">

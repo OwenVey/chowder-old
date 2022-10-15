@@ -1,9 +1,8 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { XMarkIcon, Bars3CenterLeftIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
-import Logo from '@/components/Logo';
 import { navigation, tags } from '@/utils/mocks';
-import Link from '@/components/Link';
+import { Logo, Link } from '@/components';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
