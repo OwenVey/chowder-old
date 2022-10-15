@@ -21,13 +21,11 @@ const Layout = ({ children }: Props) => {
       {isSigninPage ? (
         children
       ) : (
-        <div className="min-h-full">
+        <>
           <Sidebar />
-          <div className="flex flex-col lg:pl-64">
-            <MobileHeader />
-            <main className="flex-1">{children}</main>
-          </div>
-        </div>
+          <MobileHeader />
+          {children}
+        </>
       )}
     </>
   );

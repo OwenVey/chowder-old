@@ -1,35 +1,27 @@
-import { Dropdown, DropdownItem } from '@/components/Dropdown';
 import { getAuthServerSideProps } from '@/server/common/get-auth-server-side-props';
-import { AdjustmentsHorizontalIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
-import { signOut } from 'next-auth/react';
-import Link from '@/components/Link';
+import { Bars3Icon } from '@heroicons/react/24/outline';
 import { GetServerSideProps } from 'next/types';
 
-export default function Index() {
+export default function Recipes() {
   return (
-    <>
-      <div>Home</div>
-      <Dropdown
-        trigger={
-          <button
-            type="button"
-            className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          >
-            Button text
-          </button>
-        }
-      >
-        <DropdownItem as={Link} href="/settings" icon={<AdjustmentsHorizontalIcon />}>
-          Settings
-        </DropdownItem>
-        <DropdownItem
-          onClick={() => signOut({ callbackUrl: '/signin' })}
-          icon={<ArrowLeftOnRectangleIcon />}
-        >
-          Sign Out
-        </DropdownItem>
-      </Dropdown>
-    </>
+    <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+      <div className="relative z-0 flex flex-1 overflow-hidden">
+        <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
+          {/* Start main area*/}
+          <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
+            <div className="h-full rounded-lg border-2 border-dashed border-gray-200">2</div>
+          </div>
+          {/* End main area */}
+        </main>
+        <aside className="relative hidden w-96 flex-shrink-0 overflow-y-auto border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
+          {/* Start secondary column (hidden on smaller screens) */}
+          <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
+            <div className="h-full rounded-lg border-2 border-dashed border-gray-200">1</div>
+          </div>
+          {/* End secondary column */}
+        </aside>
+      </div>
+    </div>
   );
 }
 
