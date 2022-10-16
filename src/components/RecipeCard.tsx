@@ -24,7 +24,7 @@ export default function RecipeCard({ recipe, isActive }: Props) {
           src={recipe.photos[0]}
         />
       )}
-      <div className="ml-2 flex flex-col justify-center gap-0.5">
+      <div className="ml-2 flex flex-col justify-center gap-1">
         <div className={clsx('text-lg font-semibold', isActive ? 'text-white' : 'text-gray-12')}>
           {recipe.name}
         </div>
