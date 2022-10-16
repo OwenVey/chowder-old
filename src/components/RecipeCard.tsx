@@ -13,10 +13,7 @@ export default function RecipeCard({ recipe, isActive }: Props) {
   return (
     <Link
       href={`/recipes/${recipe.id}`}
-      className={clsx(
-        'group flex rounded-lg p-3',
-        isActive ? 'bg-primary-9' : 'hover:bg-primary-9',
-      )}
+      className={clsx('group flex rounded-lg p-3', isActive ? 'bg-primary-9' : 'hover:bg-gray-3')}
     >
       {recipe.photos[0] && (
         <Image
@@ -28,27 +25,17 @@ export default function RecipeCard({ recipe, isActive }: Props) {
         />
       )}
       <div className="ml-2 flex flex-col justify-center gap-0.5">
-        <div
-          className={clsx(
-            'text-lg font-semibold',
-            isActive ? 'text-white' : 'text-gray-12 group-hover:text-white',
-          )}
-        >
+        <div className={clsx('text-lg font-semibold', isActive ? 'text-white' : 'text-gray-12')}>
           {recipe.name}
         </div>
         <div className="flex space-x-4">
           {recipe.prepTime + recipe.cookTime > 0 && (
             <div className="flex items-center">
-              <ClockIcon
-                className={clsx(
-                  'h-4 w-4',
-                  isActive ? 'text-white' : 'text-gray-9 group-hover:text-white',
-                )}
-              />
+              <ClockIcon className={clsx('h-4 w-4', isActive ? 'text-white' : 'text-gray-9')} />
               <span
                 className={clsx(
                   'ml-1 text-xs font-medium',
-                  isActive ? 'text-white' : 'text-gray-12 group-hover:text-white',
+                  isActive ? 'text-white' : 'text-gray-12',
                 )}
               >
                 {recipe.prepTime + recipe.cookTime} min
@@ -56,28 +43,15 @@ export default function RecipeCard({ recipe, isActive }: Props) {
             </div>
           )}
           <div className="flex items-center">
-            <ListBulletIcon
-              className={clsx(
-                'h-4 w-4',
-                isActive ? 'text-white' : 'text-gray-9 group-hover:text-white',
-              )}
-            />
+            <ListBulletIcon className={clsx('h-4 w-4', isActive ? 'text-white' : 'text-gray-9')} />
             <span
-              className={clsx(
-                'ml-1 text-xs font-medium',
-                isActive ? 'text-white' : 'text-gray-12 group-hover:text-white',
-              )}
+              className={clsx('ml-1 text-xs font-medium', isActive ? 'text-white' : 'text-gray-12')}
             >
               {recipe.ingredients.length} ingredients
             </span>
           </div>
         </div>
-        <p
-          className={clsx(
-            'text-sm',
-            isActive ? 'text-whiteA-11' : 'text-gray-11 group-hover:text-whiteA-11',
-          )}
-        >
+        <p className={clsx('text-sm', isActive ? 'text-whiteA-11' : 'text-gray-11')}>
           {recipe.description}
         </p>
       </div>
