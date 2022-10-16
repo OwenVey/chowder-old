@@ -9,7 +9,7 @@ import { IconButton, Dropdown, DropdownItem, Link, Search, Logo, ThemeToggler } 
 
 export default function Sidebar() {
   const router = useRouter();
-  const { data: sessionData } = useSession();
+  const { data: session, status } = useSession({ required: true });
 
   return (
     <div className="hidden lg:flex lg:w-64 lg:flex-shrink-0 lg:flex-col lg:border-r lg:border-gray-6 lg:bg-gray-3">
@@ -78,12 +78,12 @@ export default function Sidebar() {
         <div className="block w-full flex-shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              {sessionData?.user?.image ? (
+              {session?.user?.image ? (
                 <Image
                   className="inline-block h-9 w-9 rounded-full"
                   height={36}
                   width={36}
-                  src={sessionData.user.image}
+                  src={session.user.image}
                   alt="User profile image"
                 />
               ) : (
@@ -98,8 +98,8 @@ export default function Sidebar() {
                 </span>
               )}
 
-              {sessionData?.user?.name ? (
-                <p className="ml-3 text-sm font-medium text-gray-12">{sessionData.user.name}</p>
+              {session?.user?.name ? (
+                <p className="ml-3 text-sm font-medium text-gray-12">{session.user.name}</p>
               ) : (
                 'Loading...'
               )}

@@ -1,4 +1,3 @@
-import { getAuthServerSideProps } from '@/server/common/get-auth-server-side-props';
 import { FunnelIcon, MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { GetServerSideProps } from 'next/types';
 import { IconButton } from '@/components';
@@ -82,6 +81,5 @@ export default function DefaultRecipePage() {
 export const RecipesPageLayout = (page: React.ReactElement) => (
   <RecipesLayout>{page}</RecipesLayout>
 );
-DefaultRecipePage.getLayout = RecipesPageLayout;
 
-export const getServerSideProps: GetServerSideProps = (context) => getAuthServerSideProps(context);
+DefaultRecipePage.getLayout = RecipesPageLayout;

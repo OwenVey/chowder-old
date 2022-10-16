@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import React from 'react';
-import { Sidebar, MobileHeader } from '@/components';
+import { Sidebar, MobileHeader, LoadingPage } from '@/components';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 
 type Props = {
   children: React.ReactNode;
@@ -10,6 +11,9 @@ type Props = {
 export default function Layout({ children }: Props) {
   const router = useRouter();
   const isSigninPage = router.pathname === '/signin';
+  const { status } = useSession({ required: !isSigninPage });
+
+  if (status === 'loading') return <LoadingPage />;
 
   return (
     <>

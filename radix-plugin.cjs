@@ -2,21 +2,44 @@
 const radix = require('@radix-ui/colors');
 const plugin = require('tailwindcss/plugin');
 
-const windyRadixPalette = plugin.withOptions(
+const createCssVars = (color, radixColors, alpha) => {
+  let colors = {};
+  alpha = alpha || color.slice(-1) === 'A';
+
+  Object.entries(radixColors).forEach(([key, hslValue], index) => {
+    let hslString = /\(([^)]+)\)/.exec(hslValue).pop();
+    if (!alpha) {
+      hslString = hslString.replaceAll(',', '');
+    }
+    colors[`--${color}${alpha ? 'A' : ''}${index + 1}`] = hslString;
+  });
+
+  return colors;
+};
+
+const radixPalette = plugin.withOptions(
   ({ colors = radix } = {}) => {
     let rootColors = {};
     let darkModeColors = {};
 
-    for (const [colorName, colorObj] of Object.entries(colors)) {
-      const colorMap = colorName.includes('Dark') ? darkModeColors : rootColors;
-      Object.entries(colorObj).forEach(([, value], index) => {
-        const colorNameWithoutDark = colorName.replace('Dark', '');
-        let hsl = /\(([^)]+)\)/.exec(value).pop();
-        if (colorNameWithoutDark.slice(-1) !== 'A') {
-          hsl = hsl.replaceAll(',', '');
-        }
-        colorMap[`--${colorNameWithoutDark}${index + 1}`] = hsl;
-      });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    for (const [key, { color, alpha }] of Object.entries(colors)) {
+      const radixColors = radix[color];
+      const radixColorsDark = radix[`${color}Dark`];
+
+      if (radixColors) {
+        rootColors = { ...rootColors, ...createCssVars(color, radixColors, false) };
+      }
+      if (radixColorsDark) {
+        darkModeColors = { ...darkModeColors, ...createCssVars(color, radixColorsDark, false) };
+      }
+
+      if (alpha) {
+        const radixColorsA = radix[`${color}A`];
+        const radixColorsADark = radix[`${color}DarkA`];
+        rootColors = { ...rootColors, ...createCssVars(color, radixColorsA, true) };
+        darkModeColors = { ...darkModeColors, ...createCssVars(color, radixColorsADark, true) };
+      }
     }
 
     return ({ addBase }) => {
@@ -29,19 +52,19 @@ const windyRadixPalette = plugin.withOptions(
   ({ colors = radix } = {}) => {
     const themeColors = {};
 
-    for (const [colorName, colorObj] of Object.entries(colors)) {
-      if (!colorName.includes('Dark')) {
-        const themeColor = {};
-        Object.entries(colorObj).forEach(([], index) => {
-          if (colorName.slice(-1) === 'A') {
-            themeColor[index + 1] = `hsla(var(--${colorName}${index + 1}))`;
-          } else {
-            themeColor[index + 1] = `hsl(var(--${colorName}${index + 1}) / <alpha-value>)`;
-          }
-        });
-
-        themeColors[colorName] = themeColor;
+    for (const [key, { color, alpha }] of Object.entries(colors)) {
+      const themeColor = {};
+      const themeColorA = {};
+      for (let i = 1; i <= 12; i++) {
+        if (alpha || color.slice(-1) === 'A') {
+          themeColorA[i] = `hsla(var(--${color}A${i}))`;
+        }
+        themeColor[i] = `hsl(var(--${color}${i}) / <alpha-value>)`;
       }
+      if (alpha) {
+        themeColors[`${key}${alpha ? 'A' : ''}`] = themeColorA;
+      }
+      themeColors[key] = themeColor;
     }
 
     return {
@@ -54,4 +77,4 @@ const windyRadixPalette = plugin.withOptions(
   },
 );
 
-module.exports = windyRadixPalette;
+module.exports = radixPalette;

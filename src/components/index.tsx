@@ -8,3 +8,4 @@ export { default as MobileSidebar } from './MobileSidebar';
 export { default as Search } from './Search';
 export { default as Sidebar } from './Sidebar';
 export { default as ThemeToggler } from './ThemeToggler';
+export { default as LoadingPage } from './LoadingPage';
