@@ -54,7 +54,7 @@ export default function MobileSidebar() {
                 </motion.div>
 
                 <div className="flex flex-shrink-0 items-center px-4">
-                  <Logo className="h-8 w-auto" />
+                  <Logo className="h-8 w-auto text-primary-9" />
                   <span className="ml-1 text-xl font-bold tracking-tight text-gray-12">
                     chowder.
                   </span>
@@ -67,7 +67,7 @@ export default function MobileSidebar() {
                           key={item.name}
                           href={item.href}
                           className={clsx(
-                            item.href === router.pathname
+                            router.pathname.includes(item.href)
                               ? 'bg-primary-9 text-white'
                               : 'text-gray-11 hover:bg-gray-2 hover:text-gray-12',
                             'group flex items-center rounded-md px-2 py-2 text-base font-medium leading-5',
@@ -75,7 +75,7 @@ export default function MobileSidebar() {
                         >
                           <item.icon
                             className={clsx(
-                              item.href === router.pathname
+                              router.pathname.includes(item.href)
                                 ? 'text-white'
                                 : 'text-gray-9 group-hover:text-gray-10',
                               'mr-3 h-6 w-6 flex-shrink-0',

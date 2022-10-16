@@ -1,7 +1,7 @@
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { getServerAuthSession } from './get-server-auth-session';
 
-export const getAuthServerSideProps: GetServerSideProps = async (context) => {
+export const checkValidSession = async (context: GetServerSidePropsContext) => {
   const session = await getServerAuthSession(context);
 
   if (!session) {
@@ -12,6 +12,10 @@ export const getAuthServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   }
+};
+
+export const getAuthServerSideProps: GetServerSideProps = async (context) => {
+  const session = checkValidSession(context);
 
   return {
     props: {

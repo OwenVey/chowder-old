@@ -14,7 +14,7 @@ export default function Sidebar() {
   return (
     <div className="hidden lg:flex lg:w-64 lg:flex-shrink-0 lg:flex-col lg:border-r lg:border-gray-6 lg:bg-gray-3">
       <div className="flex flex-shrink-0 items-center py-5 px-3">
-        <Logo className="h-8 w-auto" />
+        <Logo className="h-8 w-auto text-primary-9" />
         <span className="ml-1 text-xl font-bold tracking-tight text-gray-12">chowder.</span>
       </div>
       {/* Sidebar component, swap this element with another sidebar if you like */}
@@ -31,7 +31,7 @@ export default function Sidebar() {
                 key={item.name}
                 href={item.href}
                 className={clsx(
-                  item.href === router.pathname
+                  router.pathname.includes(item.href)
                     ? 'bg-primary-9 text-white'
                     : 'text-gray-11 hover:bg-gray-1 hover:text-gray-12',
                   'group flex items-center rounded-md px-2 py-2 text-sm font-medium',
@@ -39,7 +39,7 @@ export default function Sidebar() {
               >
                 <item.icon
                   className={clsx(
-                    item.href === router.pathname
+                    router.pathname.includes(item.href)
                       ? 'text-white'
                       : 'text-gray-9 group-hover:text-gray-10',
                     'mr-3 h-6 w-6 flex-shrink-0',

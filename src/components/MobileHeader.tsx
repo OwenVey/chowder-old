@@ -8,7 +8,7 @@ export default function MobileHeader() {
       </div>
 
       <div className="relative flex flex-grow basis-0 items-center">
-        <Logo className="h-8 w-auto" />
+        <Logo className="h-8 w-auto text-primary-9" />
       </div>
 
       <div className="mr-6 sm:mr-0">
