@@ -6,10 +6,11 @@ import { navigation, tags } from '@/utils/mocks';
 import { useRouter } from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
 import { IconButton, Dropdown, DropdownItem, Link, Search, Logo, ThemeToggler } from '@/components';
+import { isActiveLink } from '@/utils/is-active-link';
 
 export default function Sidebar() {
   const router = useRouter();
-  const { data: session, status } = useSession({ required: true });
+  const { data: session } = useSession();
 
   return (
     <div className="hidden lg:flex lg:w-64 lg:flex-shrink-0 lg:flex-col lg:border-r lg:border-gray-6 lg:bg-gray-3">
@@ -31,7 +32,7 @@ export default function Sidebar() {
                 key={item.name}
                 href={item.href}
                 className={clsx(
-                  router.pathname.includes(item.href)
+                  isActiveLink(router, item.href)
                     ? 'bg-primary-9 text-white'
                     : 'text-gray-11 hover:bg-gray-1 hover:text-gray-12',
                   'group flex items-center rounded-md px-2 py-2 text-sm font-medium',
@@ -39,7 +40,7 @@ export default function Sidebar() {
               >
                 <item.icon
                   className={clsx(
-                    router.pathname.includes(item.href)
+                    isActiveLink(router, item.href)
                       ? 'text-white'
                       : 'text-gray-9 group-hover:text-gray-10',
                     'mr-3 h-6 w-6 flex-shrink-0',

@@ -6,6 +6,7 @@ import { Logo, Link } from '@/components';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
+import { isActiveLink } from '@/utils/is-active-link';
 
 export default function MobileSidebar() {
   const router = useRouter();
@@ -67,7 +68,7 @@ export default function MobileSidebar() {
                           key={item.name}
                           href={item.href}
                           className={clsx(
-                            router.pathname.includes(item.href)
+                            isActiveLink(router, item.href)
                               ? 'bg-primary-9 text-white'
                               : 'text-gray-11 hover:bg-gray-2 hover:text-gray-12',
                             'group flex items-center rounded-md px-2 py-2 text-base font-medium leading-5',
@@ -75,7 +76,7 @@ export default function MobileSidebar() {
                         >
                           <item.icon
                             className={clsx(
-                              router.pathname.includes(item.href)
+                              isActiveLink(router, item.href)
                                 ? 'text-white'
                                 : 'text-gray-9 group-hover:text-gray-10',
                               'mr-3 h-6 w-6 flex-shrink-0',

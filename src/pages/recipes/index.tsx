@@ -1,5 +1,4 @@
 import { FunnelIcon, MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/24/outline';
-import { GetServerSideProps } from 'next/types';
 import { IconButton } from '@/components';
 import RecipeCard from '@/components/RecipeCard';
 import { recipes } from '@/utils/mocks';
