@@ -1,7 +1,7 @@
 import { Recipe } from '@/types/chowder';
 import { trpc } from '@/utils/trpc';
 import { RecipesPageLayout } from '.';
-import { IconButton } from '@/components';
+import { AlertDialog, IconButton } from '@/components';
 import { useRouter } from 'next/router';
 import {
   TrashIcon,
@@ -27,7 +27,11 @@ export default function RecipePage({}: Props) {
           <IconButton icon={<PlayIcon />} tooltip="Start recipe" />
           <IconButton icon={<ShareIcon />} tooltip="Share" />
           <IconButton icon={<PencilSquareIcon />} tooltip="Edit recipe" />
-          <IconButton icon={<TrashIcon />} tooltip="Delete recipe" color="red" />
+          <AlertDialog
+            title={`Are you sure you want to delete "${recipe?.name}"?`}
+            description="This action cannot be undone."
+            trigger={<IconButton icon={<TrashIcon />} tooltip="Delete recipe" color="red" />}
+          />
         </div>
       </div>
       <div>{JSON.stringify(recipe, null, 2)}</div>

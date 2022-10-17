@@ -10,3 +10,4 @@ export { default as Sidebar } from './Sidebar';
 export { default as ThemeToggler } from './ThemeToggler';
 export { default as LoadingPage } from './LoadingPage';
 export { default as Tooltip } from './Tooltip';
+export { default as AlertDialog } from './AlertDialog';
