@@ -39,4 +39,4 @@ const IconButton = forwardRef<HTMLButtonElement, Props>(
 );
 
 export default IconButton;
-IconButton.displayName = 'IconButtonTest';
+IconButton.displayName = 'IconButton';
