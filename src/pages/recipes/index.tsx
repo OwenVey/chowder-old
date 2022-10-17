@@ -1,9 +1,10 @@
 import { FunnelIcon, MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/24/outline';
-import { IconButton } from '@/components';
+import { Dropdown, DropdownItem, IconButton } from '@/components';
 import RecipeCard from '@/components/RecipeCard';
 import { recipes } from '@/utils/mocks';
 import React from 'react';
 import { useRouter } from 'next/router';
+import { PencilSquareIcon, GlobeAltIcon } from '@heroicons/react/20/solid';
 
 type Props = {
   children: React.ReactNode;
@@ -16,15 +17,19 @@ function RecipesLayout({ children }: Props) {
     <div className="relative z-0 flex flex-1 overflow-hidden">
       {/* Start first column (hidden on smaller screens) */}
       <aside className="flex w-full flex-shrink-0 flex-col overflow-y-auto border-r border-gray-6 sm:w-96">
-        <div className="flex justify-between border-b border-gray-6 bg-gray-3 p-4">
+        <div className="flex h-16 items-center justify-between border-b border-gray-6 bg-gray-3 px-4">
           <div>
-            <h1 className="text-lg font-medium text-gray-12">Recipes</h1>
+            <h1 className="font-medium text-gray-12">Recipes</h1>
             <div className="text-sm text-gray-11">5 Recipes</div>
           </div>
-          <div className="flex items-center gap-1">
-            <IconButton icon={<MagnifyingGlassIcon />} />
-            <IconButton icon={<FunnelIcon />} />
-            <IconButton icon={<PlusIcon />} />
+          <div className="flex items-center gap-3">
+            <IconButton icon={<MagnifyingGlassIcon />} tooltip="Search" />
+            <IconButton icon={<FunnelIcon />} tooltip="Filter" />
+
+            <Dropdown trigger={<IconButton showDownArrow icon={<PlusIcon />} tooltip="Add new" />}>
+              <DropdownItem icon={<PencilSquareIcon />}>Create New</DropdownItem>
+              <DropdownItem icon={<GlobeAltIcon />}>Import from URL</DropdownItem>
+            </Dropdown>
           </div>
         </div>
         <div className="min-h-0 flex-1 space-y-1 overflow-y-auto p-3">

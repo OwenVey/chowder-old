@@ -34,7 +34,7 @@ export default function Sidebar() {
                 className={clsx(
                   isActiveLink(router, item.href)
                     ? 'bg-primary-9 text-white'
-                    : 'text-gray-11 hover:bg-gray-1 hover:text-gray-12',
+                    : 'text-gray-11 hover:bg-gray-5 hover:text-gray-12 active:bg-gray-6',
                   'group flex items-center rounded-md px-2 py-2 text-sm font-medium',
                 )}
               >
@@ -42,7 +42,7 @@ export default function Sidebar() {
                   className={clsx(
                     isActiveLink(router, item.href)
                       ? 'text-white'
-                      : 'text-gray-9 group-hover:text-gray-10',
+                      : 'text-gray-9 group-hover:text-gray-11',
                     'mr-3 h-6 w-6 flex-shrink-0',
                   )}
                   aria-hidden="true"

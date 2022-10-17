@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
@@ -20,7 +21,7 @@ export default function Dropdown({ align = 'end', trigger, children }: Props) {
           <DropdownMenu.Portal forceMount>
             <DropdownMenu.Content asChild align={align} sideOffset={5}>
               <motion.div
-                className="origin-[var(--radix-dropdown-menu-content-transform-origin)] rounded-md border border-gray-7 bg-gray-1 shadow-lg"
+                className="origin-[var(--radix-dropdown-menu-content-transform-origin)] rounded-md border border-gray-7 bg-gray-1 p-1 shadow-lg"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{
                   scale: 1,

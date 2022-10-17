@@ -78,7 +78,7 @@ export default function MobileSidebar() {
                             className={clsx(
                               isActiveLink(router, item.href)
                                 ? 'text-white'
-                                : 'text-gray-9 group-hover:text-gray-10',
+                                : 'text-gray-9 group-hover:text-gray-11',
                               'mr-3 h-6 w-6 flex-shrink-0',
                             )}
                             aria-hidden="true"

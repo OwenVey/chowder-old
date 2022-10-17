@@ -17,11 +17,11 @@ export default function DropdownItem<T extends React.ElementType = 'button'>({
     <DropdownMenuItem asChild>
       <Component
         {...props}
-        className="group flex w-full items-center py-2 pl-4 pr-10 ring-0 hover:bg-gray-3 focus:outline-none"
+        className="group flex w-full items-center rounded p-2 pr-10 hover:bg-gray-3 focus:outline-none active:bg-gray-4"
       >
-        {icon && <div className="mr-3 h-5 w-5 text-gray-9 group-hover:text-gray-11">{icon}</div>}
+        {icon && <div className="mr-3 h-5 w-5 text-gray-10 group-hover:text-gray-12">{icon}</div>}
         {children && (
-          <div className="text-sm text-gray-11 group-hover:text-gray-12 group-disabled:text-opacity-50">
+          <div className="text-sm text-gray-12/90 group-hover:text-gray-12 group-disabled:text-opacity-50">
             {children}
           </div>
         )}

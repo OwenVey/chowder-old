@@ -13,7 +13,7 @@ export default function RecipeCard({ recipe, isActive }: Props) {
   return (
     <Link
       href={`/recipes/${recipe.id}`}
-      className={clsx('group flex rounded-lg p-3', isActive ? 'bg-primary-9' : 'hover:bg-gray-3')}
+      className={clsx('group flex rounded-lg p-3', isActive ? 'bg-primary-9' : 'hover:bg-gray-4')}
     >
       {recipe.photos[0] && (
         <Image
@@ -25,7 +25,12 @@ export default function RecipeCard({ recipe, isActive }: Props) {
         />
       )}
       <div className="ml-2 flex flex-col justify-center gap-1">
-        <div className={clsx('text-lg font-semibold', isActive ? 'text-white' : 'text-gray-12')}>
+        <div
+          className={clsx(
+            'font-cool text-lg font-medium',
+            isActive ? 'text-white' : 'text-gray-12',
+          )}
+        >
           {recipe.name}
         </div>
         <div className="flex space-x-4">
