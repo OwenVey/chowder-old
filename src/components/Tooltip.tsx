@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { AnimatePresence, motion } from 'framer-motion';
+import React, { useState } from 'react';
 
 type Props = {
   children: React.ReactNode;

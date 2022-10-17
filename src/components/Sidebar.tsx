@@ -1,12 +1,12 @@
-import clsx from 'clsx';
-import { Cog6ToothIcon } from '@heroicons/react/24/outline';
-import { AdjustmentsHorizontalIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/20/solid';
-import Image from 'next/future/image';
-import { navigation, tags } from '@/utils/mocks';
-import { useRouter } from 'next/router';
-import { signOut, useSession } from 'next-auth/react';
-import { IconButton, Dropdown, DropdownItem, Link, Search, Logo, ThemeToggler } from '@/components';
+import { Button, Dropdown, DropdownItem, Link, Logo, Search, ThemeToggler } from '@/components';
 import { isActiveLink } from '@/utils/is-active-link';
+import { navigation, tags } from '@/utils/mocks';
+import { AdjustmentsHorizontalIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/20/solid';
+import { Cog6ToothIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
+import { signOut, useSession } from 'next-auth/react';
+import Image from 'next/future/image';
+import { useRouter } from 'next/router';
 
 export default function Sidebar() {
   const router = useRouter();
@@ -106,7 +106,7 @@ export default function Sidebar() {
 
             <div className="flex items-center">
               <ThemeToggler />
-              <Dropdown trigger={<IconButton icon={<Cog6ToothIcon />} />}>
+              <Dropdown trigger={<Button icon={<Cog6ToothIcon />} variant="subtle" color="gray" />}>
                 <DropdownItem as={Link} href="/settings" icon={<AdjustmentsHorizontalIcon />}>
                   Settings
                 </DropdownItem>

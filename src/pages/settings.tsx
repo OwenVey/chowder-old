@@ -1,5 +1,5 @@
 import { Button } from '@/components';
-import { ArrowRightIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
 
 export default function Settings() {
@@ -181,6 +181,263 @@ export default function Settings() {
         >
           Button
         </Button>
+      </div>
+
+      <div className="flex gap-2">
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="primary"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="gray"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="red"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="green"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="blue"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="yellow"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
+      </div>
+
+      <div className="flex gap-2">
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="filled"
+          color="primary"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="filled"
+          color="gray"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="filled"
+          color="red"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="filled"
+          color="green"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="filled"
+          color="blue"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="filled"
+          color="yellow"
+          icon={<MagnifyingGlassIcon />}
+        />
+      </div>
+
+      <div className="flex gap-2">
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="default"
+          color="primary"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="default"
+          color="gray"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="default"
+          color="red"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="default"
+          color="green"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="default"
+          color="blue"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="default"
+          color="yellow"
+          icon={<MagnifyingGlassIcon />}
+        />
+      </div>
+
+      <div className="flex gap-2">
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="light"
+          color="primary"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="light"
+          color="gray"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="light"
+          color="red"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="light"
+          color="green"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="light"
+          color="blue"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="light"
+          color="yellow"
+          icon={<MagnifyingGlassIcon />}
+        />
+      </div>
+
+      <div className="flex gap-2">
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="primary"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="gray"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="red"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="green"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="blue"
+          icon={<MagnifyingGlassIcon />}
+        />
+
+        <Button
+          loading={loading}
+          disabled={disabled}
+          variant="subtle"
+          color="yellow"
+          icon={<MagnifyingGlassIcon />}
+        />
       </div>
     </main>
   );

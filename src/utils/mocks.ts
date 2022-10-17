@@ -1,8 +1,8 @@
 import { Recipe } from '@/types/chowder';
 import {
-  HomeIcon,
-  DocumentTextIcon,
   CalendarDaysIcon,
+  DocumentTextIcon,
+  HomeIcon,
   ShoppingCartIcon,
 } from '@heroicons/react/24/outline';
 

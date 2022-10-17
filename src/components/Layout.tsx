@@ -1,8 +1,8 @@
-import Head from 'next/head';
-import React from 'react';
-import { Sidebar, MobileHeader, LoadingPage } from '@/components';
-import { useRouter } from 'next/router';
+import { LoadingPage, MobileHeader, Sidebar } from '@/components';
 import { useSession } from 'next-auth/react';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 type Props = {
   children: React.ReactNode;

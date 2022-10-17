@@ -1,10 +1,10 @@
-import { FunnelIcon, MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/24/outline';
-import { Dropdown, DropdownItem, IconButton } from '@/components';
+import { Button, Dropdown, DropdownItem } from '@/components';
 import RecipeCard from '@/components/RecipeCard';
 import { recipes } from '@/utils/mocks';
-import React from 'react';
+import { ChevronDownIcon, GlobeAltIcon, PencilSquareIcon } from '@heroicons/react/20/solid';
+import { FunnelIcon, MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/router';
-import { PencilSquareIcon, GlobeAltIcon } from '@heroicons/react/20/solid';
+import React from 'react';
 
 type Props = {
   children: React.ReactNode;
@@ -23,10 +23,20 @@ function RecipesLayout({ children }: Props) {
             <div className="text-sm text-gray-11">5 Recipes</div>
           </div>
           <div className="flex items-center gap-3">
-            <IconButton icon={<MagnifyingGlassIcon />} tooltip="Search" />
-            <IconButton icon={<FunnelIcon />} tooltip="Filter" />
+            <Button icon={<MagnifyingGlassIcon />} variant="subtle" color="gray" tooltip="Search" />
+            <Button icon={<FunnelIcon />} variant="subtle" color="gray" tooltip="Filter" />
 
-            <Dropdown trigger={<IconButton showDownArrow icon={<PlusIcon />} tooltip="Add new" />}>
+            <Dropdown
+              trigger={
+                <Button
+                  icon={<PlusIcon />}
+                  rightIcon={<ChevronDownIcon className="!m-0 h-4 w-4" />}
+                  variant="subtle"
+                  color="gray"
+                  tooltip="Add new"
+                />
+              }
+            >
               <DropdownItem icon={<PencilSquareIcon />}>Create New</DropdownItem>
               <DropdownItem icon={<GlobeAltIcon />}>Import from URL</DropdownItem>
             </Dropdown>

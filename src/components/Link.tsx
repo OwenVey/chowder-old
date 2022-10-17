@@ -1,5 +1,5 @@
-import React, { forwardRef } from 'react';
 import { default as NextLink, LinkProps as NextLinkProps } from 'next/link';
+import React, { forwardRef } from 'react';
 
 export interface Props
   extends Omit<NextLinkProps, 'onMouseEnter' | 'onClick' | 'onTouchStart'>,

@@ -1,6 +1,6 @@
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
-import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import React, { useState } from 'react';
 import Button, { ButtonColor } from './Button';
 
 type AlertDialogVariant = 'primary' | 'warning' | 'danger' | 'success' | 'info';

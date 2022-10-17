@@ -1,7 +1,7 @@
-import { useTheme } from 'next-themes';
-import { useState, useEffect } from 'react';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
-import IconButton from './IconButton';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { Button } from '.';
 
 const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
@@ -11,9 +11,11 @@ const ThemeToggler = () => {
   if (!mounted) return null;
 
   return (
-    <IconButton
+    <Button
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       icon={theme === 'light' ? <MoonIcon className="h-6 w-6" /> : <SunIcon className="h-6 w-6" />}
+      variant="subtle"
+      color="gray"
     />
   );
 };

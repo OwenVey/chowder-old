@@ -1,12 +1,12 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import { XMarkIcon, Bars3CenterLeftIcon } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
-import { navigation, tags } from '@/utils/mocks';
-import { Logo, Link } from '@/components';
-import { useRouter } from 'next/router';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
+import { Link, Logo } from '@/components';
 import { isActiveLink } from '@/utils/is-active-link';
+import { navigation, tags } from '@/utils/mocks';
+import { Bars3CenterLeftIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import * as Dialog from '@radix-ui/react-dialog';
+import clsx from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function MobileSidebar() {
   const router = useRouter();

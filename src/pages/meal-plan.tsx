@@ -1,5 +1,3 @@
-import { GetServerSideProps } from 'next/types';
-
 export default function MealPlan() {
   return (
     <div>

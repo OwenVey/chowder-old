@@ -1,4 +1,3 @@
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
