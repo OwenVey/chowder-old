@@ -19,7 +19,7 @@ export default function Tooltip({ children, label, side = 'top' }: Props) {
           <TooltipPrimitive.Portal forceMount>
             <TooltipPrimitive.Content asChild side={side} sideOffset={10} align="center">
               <motion.div
-                className="inline-flex items-center rounded-md border border-gray-7 bg-gray-1 px-2 py-1.5"
+                className="z-50 inline-flex items-center rounded-md border border-gray-7 bg-gray-1 px-2 py-1.5"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0, transition: { duration: 0.2 } }}
