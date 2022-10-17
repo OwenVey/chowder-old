@@ -14,7 +14,7 @@ export default function Sidebar() {
 
   return (
     <div className="hidden lg:flex lg:w-64 lg:flex-shrink-0 lg:flex-col lg:border-r lg:border-gray-6 lg:bg-gray-3">
-      <div className="flex flex-shrink-0 items-center py-5 px-3">
+      <div className="flex flex-shrink-0 items-center py-4 px-3">
         <Logo className="h-8 w-auto text-primary-9" />
         <span className="ml-1 text-xl font-bold tracking-tight text-gray-12">chowder.</span>
       </div>
@@ -53,15 +53,13 @@ export default function Sidebar() {
           </div>
           <div className="mt-8">
             {/* Secondary navigation */}
-            <h3 className="px-3 text-sm font-medium text-gray-10" id="desktop-teams-headline">
-              Tags
-            </h3>
-            <div className="mt-1 space-y-1" role="group" aria-labelledby="desktop-teams-headline">
+            <h3 className="px-3 text-sm font-medium text-gray-10">Tags</h3>
+            <div className="mt-1 space-y-1" role="group">
               {tags.map((tag) => (
                 <a
                   key={tag.name}
                   href={tag.href}
-                  className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-11 hover:bg-gray-1 hover:text-gray-12"
+                  className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-11 hover:bg-gray-5 hover:text-gray-12 active:bg-gray-6"
                 >
                   <span
                     className={clsx(tag.bgColorClass, 'mr-4 h-2.5 w-2.5 rounded-full')}

@@ -70,8 +70,8 @@ export default function MobileSidebar() {
                           className={clsx(
                             isActiveLink(router, item.href)
                               ? 'bg-primary-9 text-white'
-                              : 'text-gray-11 hover:bg-gray-2 hover:text-gray-12',
-                            'group flex items-center rounded-md px-2 py-2 text-base font-medium leading-5',
+                              : 'text-gray-11 hover:bg-gray-5 hover:text-gray-12 active:bg-gray-6',
+                            'group flex items-center rounded-md px-2 py-2 font-medium',
                           )}
                         >
                           <item.icon
@@ -88,22 +88,13 @@ export default function MobileSidebar() {
                       ))}
                     </div>
                     <div className="mt-8">
-                      <h3
-                        className="px-3 text-sm font-medium text-gray-11"
-                        id="mobile-teams-headline"
-                      >
-                        Teams
-                      </h3>
-                      <div
-                        className="mt-1 space-y-1"
-                        role="group"
-                        aria-labelledby="mobile-teams-headline"
-                      >
+                      <h3 className="px-3 text-sm font-medium text-gray-11">Tags</h3>
+                      <div className="mt-1 space-y-1" role="group">
                         {tags.map((tag) => (
                           <a
                             key={tag.name}
                             href={tag.href}
-                            className="group flex items-center rounded-md px-3 py-2 text-base font-medium leading-5 text-gray-11 hover:bg-gray-2 hover:text-gray-12"
+                            className="group flex items-center rounded-md px-3 py-2 font-medium leading-5 text-gray-11 hover:bg-gray-5 hover:text-gray-12 active:bg-gray-6"
                           >
                             <span
                               className={clsx(tag.bgColorClass, 'mr-4 h-2.5 w-2.5 rounded-full')}

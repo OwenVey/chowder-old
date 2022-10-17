@@ -13,7 +13,10 @@ export default function RecipeCard({ recipe, isActive }: Props) {
   return (
     <Link
       href={`/recipes/${recipe.id}`}
-      className={clsx('group flex rounded-lg p-3', isActive ? 'bg-primary-9' : 'hover:bg-gray-4')}
+      className={clsx(
+        'group flex rounded-lg p-3',
+        isActive ? 'bg-primary-9' : 'hover:bg-gray-4 active:bg-gray-5',
+      )}
     >
       {recipe.photos[0] && (
         <Image

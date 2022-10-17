@@ -1,14 +1,10 @@
 import { Recipe } from '@/types/chowder';
-import { recipes } from '@/utils/mocks';
 import { trpc } from '@/utils/trpc';
-import { GetServerSideProps } from 'next';
 import { RecipesPageLayout } from '.';
+import { IconButton } from '@/components';
 import { useRouter } from 'next/router';
-import { IconButton, Tooltip } from '@/components';
 import {
   TrashIcon,
-  MagnifyingGlassIcon,
-  PlusIcon,
   PencilSquareIcon,
   ShareIcon,
   PlayIcon,
@@ -22,7 +18,6 @@ type Props = {
 export default function RecipePage({}: Props) {
   const { query } = useRouter();
   const { data: recipe } = trpc.auth.getRecipeById.useQuery(query.id as string);
-  console.log(recipe);
 
   return (
     <div>

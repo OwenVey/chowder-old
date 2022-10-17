@@ -17,7 +17,7 @@ export default function Tooltip({ children, label, side = 'top' }: Props) {
       <AnimatePresence>
         {open ? (
           <TooltipPrimitive.Portal forceMount>
-            <TooltipPrimitive.Content asChild side={side} align="center">
+            <TooltipPrimitive.Content asChild side={side} sideOffset={10} align="center">
               <motion.div
                 className="inline-flex items-center rounded-md border border-gray-7 bg-gray-1 px-2 py-1.5"
                 initial={{ opacity: 0 }}
