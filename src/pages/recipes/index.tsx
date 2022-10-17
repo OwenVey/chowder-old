@@ -8,6 +8,7 @@ import {
   MagnifyingGlassIcon,
   PlusIcon,
 } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -21,7 +22,12 @@ function RecipesLayout({ children }: Props) {
   return (
     <div className="relative z-0 flex flex-1 overflow-hidden">
       {/* Start first column (hidden on smaller screens) */}
-      <aside className="flex w-full flex-shrink-0 flex-col overflow-y-auto border-r border-gray-6 sm:w-96">
+      <aside
+        className={clsx(
+          'flex w-full flex-shrink-0 flex-col border-r border-gray-6 sm:w-96',
+          query.id ? 'hidden sm:flex' : '',
+        )}
+      >
         <div className="flex h-16 items-center justify-between border-b border-gray-6 bg-gray-3 px-4">
           <div>
             <h1 className="font-medium text-gray-12">Recipes</h1>
@@ -51,14 +57,24 @@ function RecipesLayout({ children }: Props) {
           {recipes.map((recipe) => (
             <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
           ))}
+          {recipes.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
+          ))}
+          {recipes.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
+          ))}
+          {recipes.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
+          ))}
+          {recipes.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
+          ))}
         </div>
       </aside>
       {/* End first column */}
 
       {/* Start second column*/}
-      <main className="relative z-0 hidden flex-1 overflow-y-auto focus:outline-none sm:block">
-        {children}
-      </main>
+      <main className={clsx('flex min-w-0 flex-1 flex-col')}>{children}</main>
       {/* End second column */}
     </div>
   );
@@ -66,7 +82,7 @@ function RecipesLayout({ children }: Props) {
 
 export default function DefaultRecipePage() {
   return (
-    <div className="flex h-full flex-col items-center justify-center px-6 text-center">
+    <div className="hidden h-full flex-col items-center justify-center px-6 text-center sm:flex">
       <div className="mx-auto flex rounded-full bg-gray-3 p-3">
         <DocumentPlusIcon className="h-8 w-8 text-gray-11" />
       </div>
