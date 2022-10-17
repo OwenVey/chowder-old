@@ -11,6 +11,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   leftIcon?: React.ReactElement;
   rightIcon?: React.ReactElement;
+  disabled?: boolean;
 }
 
 const buttonVariants: Record<ButtonVariant, Record<ButtonColor, string>> = {
@@ -44,18 +45,37 @@ const buttonVariants: Record<ButtonVariant, Record<ButtonColor, string>> = {
   },
 };
 
+const classes = {
+  base: 'relative inline-flex select-none items-center justify-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm transition-colors',
+  disabled: '!pointer-events-none !border-transparent !bg-gray-4 !text-gray-8',
+  loading:
+    'pointer-events-none before:absolute before:-inset-[1px] before:z-10 before:rounded-md before:bg-gray-1/40',
+};
+
 const Button = forwardRef<HTMLButtonElement, Props>(
   (
-    { variant = 'filled', color = 'primary', loading, children, leftIcon, rightIcon, ...restProps },
+    {
+      variant = 'filled',
+      color = 'primary',
+      loading,
+      children,
+      leftIcon,
+      rightIcon,
+      disabled,
+      ...restProps
+    },
     ref,
   ) => {
     return (
       <button
         ref={ref}
         {...restProps}
+        disabled={disabled || loading}
         className={clsx(
-          'inline-flex select-none items-center justify-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm transition-colors',
+          classes.base,
           buttonVariants[variant][color],
+          disabled && classes.disabled,
+          loading && classes.loading,
         )}
       >
         {leftIcon && !loading && React.cloneElement(leftIcon, { className: '-ml-1 mr-2 h-5 w-5' })}
