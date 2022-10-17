@@ -17,7 +17,7 @@ type Props = {
 
 export default function RecipePage({}: Props) {
   const { query } = useRouter();
-  const { data: recipe } = trpc.auth.getRecipeById.useQuery(query.id as string);
+  const { data: recipe } = trpc.example.getRecipeById.useQuery(query.id as string);
 
   return (
     <div>
