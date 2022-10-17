@@ -38,6 +38,8 @@ module.exports = {
         blueDark: radixColors.blueDark,
         green: radixColors.green,
         greenDark: radixColors.greenDark,
+        yellow: radixColors.yellow,
+        yellowDark: radixColors.yellowDark,
         whiteA: radixColors.whiteA,
       },
     }),

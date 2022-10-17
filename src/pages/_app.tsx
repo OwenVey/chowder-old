@@ -23,7 +23,7 @@ function App({ Component, pageProps, session }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
   return (
     <SessionProvider session={session}>
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="class" disableTransitionOnChange>
         <TooltipProvider>
           <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
         </TooltipProvider>

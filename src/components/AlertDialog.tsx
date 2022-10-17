@@ -1,14 +1,33 @@
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import Button, { ButtonColor } from './Button';
+
+type AlertDialogVariant = 'primary' | 'warning' | 'danger' | 'success' | 'info';
 
 type Props = {
   trigger: React.ReactNode;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
+  confirmText?: string;
+  variant?: AlertDialogVariant;
 };
 
-export default function AlertDialog({ trigger, title, description }: Props) {
+const variantToColor: Record<AlertDialogVariant, ButtonColor> = {
+  primary: 'primary',
+  warning: 'yellow',
+  danger: 'red',
+  success: 'green',
+  info: 'blue',
+};
+
+export default function AlertDialog({
+  trigger,
+  title,
+  description,
+  confirmText = 'Confirm',
+  variant = 'primary',
+}: Props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -53,11 +72,11 @@ export default function AlertDialog({ trigger, title, description }: Props) {
                   {description}
                 </AlertDialogPrimitive.Description>
                 <div className="mt-4 flex justify-end space-x-2">
-                  <AlertDialogPrimitive.Cancel className="inline-flex select-none justify-center rounded-md border border-gray-7 bg-white px-4 py-2 text-sm font-medium text-gray-12 hover:bg-gray-2 active:bg-gray-3 dark:bg-gray-4 dark:hover:bg-gray-5 dark:active:bg-gray-6">
-                    Cancel
+                  <AlertDialogPrimitive.Cancel asChild>
+                    <Button variant="default">Cancel</Button>
                   </AlertDialogPrimitive.Cancel>
-                  <AlertDialogPrimitive.Action className="inline-flex select-none justify-center rounded-md border border-transparent bg-primary-9 px-4 py-2 text-sm font-medium text-white hover:bg-primary-10">
-                    Confirm
+                  <AlertDialogPrimitive.Action asChild>
+                    <Button color={variantToColor[variant]}>{confirmText}</Button>
                   </AlertDialogPrimitive.Action>
                 </div>
               </motion.div>

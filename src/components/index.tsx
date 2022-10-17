@@ -11,3 +11,5 @@ export { default as ThemeToggler } from './ThemeToggler';
 export { default as LoadingPage } from './LoadingPage';
 export { default as Tooltip } from './Tooltip';
 export { default as AlertDialog } from './AlertDialog';
+export { default as Button } from './Button';
+export { default as Loader } from './Loader';

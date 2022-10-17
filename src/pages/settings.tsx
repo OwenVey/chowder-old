@@ -1,33 +1,106 @@
+import { Button } from '@/components';
+import { ArrowRightIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { useState } from 'react';
+
 export default function Settings() {
+  const [loading, setIsLoading] = useState(false);
+
   return (
-    <main className="bg-red-500 p-10">
-      <div className="flex">
-        <div className="h-20 w-20 bg-primary-1"></div>
-        <div className="h-20 w-20 bg-primary-2"></div>
-        <div className="h-20 w-20 bg-primary-3"></div>
-        <div className="h-20 w-20 bg-primary-4"></div>
-        <div className="h-20 w-20 bg-primary-5"></div>
-        <div className="h-20 w-20 bg-primary-6"></div>
-        <div className="h-20 w-20 bg-primary-7"></div>
-        <div className="h-20 w-20 bg-primary-8"></div>
-        <div className="h-20 w-20 bg-primary-9"></div>
-        <div className="h-20 w-20 bg-primary-10"></div>
-        <div className="h-20 w-20 bg-primary-11"></div>
-        <div className="h-20 w-20 bg-primary-12"></div>
+    <main className="flex h-full w-full flex-col items-center justify-center gap-10">
+      <Button loading={loading} onClick={() => setIsLoading(!loading)}>
+        Toggle Loading
+      </Button>
+      <div className="flex gap-2">
+        <Button
+          loading={loading}
+          variant="filled"
+          color="primary"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
+        <Button loading={loading} variant="filled" color="gray" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
+        <Button loading={loading} variant="filled" color="red" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
+        <Button loading={loading} variant="filled" color="green" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
+        <Button loading={loading} variant="filled" color="blue" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
+        <Button
+          loading={loading}
+          variant="filled"
+          color="yellow"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
       </div>
-      <div className="flex">
-        <div className="h-20 w-20 bg-primaryA-1"></div>
-        <div className="h-20 w-20 bg-primaryA-2"></div>
-        <div className="h-20 w-20 bg-primaryA-3"></div>
-        <div className="h-20 w-20 bg-primaryA-4"></div>
-        <div className="h-20 w-20 bg-primaryA-5"></div>
-        <div className="h-20 w-20 bg-primaryA-6"></div>
-        <div className="h-20 w-20 bg-primaryA-7"></div>
-        <div className="h-20 w-20 bg-primaryA-8"></div>
-        <div className="h-20 w-20 bg-primaryA-9"></div>
-        <div className="h-20 w-20 bg-primaryA-10"></div>
-        <div className="h-20 w-20 bg-primaryA-11"></div>
-        <div className="h-20 w-20 bg-primaryA-12"></div>
+
+      <div className="flex gap-2">
+        <Button
+          loading={loading}
+          variant="default"
+          color="primary"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
+        <Button loading={loading} variant="default" color="gray" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
+        <Button loading={loading} variant="default" color="red" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
+        <Button
+          loading={loading}
+          variant="default"
+          color="green"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
+        <Button loading={loading} variant="default" color="blue" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
+        <Button
+          loading={loading}
+          variant="default"
+          color="yellow"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
+      </div>
+
+      <div className="flex gap-2">
+        <Button
+          loading={loading}
+          variant="light"
+          color="primary"
+          leftIcon={<MagnifyingGlassIcon />}
+        >
+          Button
+        </Button>
+        <Button loading={loading} variant="light" color="gray" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
+        <Button loading={loading} variant="light" color="red" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
+        <Button loading={loading} variant="light" color="green" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
+        <Button loading={loading} variant="light" color="blue" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
+        <Button loading={loading} variant="light" color="yellow" leftIcon={<MagnifyingGlassIcon />}>
+          Button
+        </Button>
       </div>
     </main>
   );

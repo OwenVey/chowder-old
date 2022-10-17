@@ -30,6 +30,8 @@ export default function RecipePage({}: Props) {
           <AlertDialog
             title={`Are you sure you want to delete "${recipe?.name}"?`}
             description="This action cannot be undone."
+            confirmText="Delete"
+            variant="danger"
             trigger={<IconButton icon={<TrashIcon />} tooltip="Delete recipe" color="red" />}
           />
         </div>
