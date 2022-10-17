@@ -86,7 +86,7 @@ export default function Sidebar() {
                   alt="User profile image"
                 />
               ) : (
-                <span className="inline-block h-8 w-8 overflow-hidden rounded-full bg-gray-3">
+                <span className="inline-block h-9 w-9 overflow-hidden rounded-full bg-gray-3">
                   <svg
                     className="h-full w-full text-gray-9"
                     fill="currentColor"
