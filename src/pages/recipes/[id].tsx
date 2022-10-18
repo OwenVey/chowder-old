@@ -1,8 +1,8 @@
 import { Link, Loader } from '@/components';
-import { ActionsHeader, IngredientsSidebar } from '@/components/RecipeId';
+import { ActionsHeader, IngredientsSidebar, RecipeDirection } from '@/components/RecipeId';
 import { Recipe } from '@/types/chowder';
 import { trpc } from '@/utils/trpc';
-import { ChevronLeftIcon, LinkIcon, UsersIcon } from '@heroicons/react/20/solid';
+import { ChevronLeftIcon, ClockIcon, LinkIcon, UsersIcon } from '@heroicons/react/20/solid';
 import { useRouter } from 'next/router';
 import { RecipesPageLayout } from '.';
 
@@ -36,6 +36,8 @@ export default function RecipePage({}: Props) {
         <div className="flex min-h-0 flex-1">
           <div className="flex-1 overflow-y-auto p-10">
             <h1 className="text-3xl font-bold text-gray-12">{recipe.name}</h1>
+
+            {/* link and servings */}
             <div className="mt-2 flex gap-8">
               {recipe.link && (
                 <a
@@ -54,7 +56,52 @@ export default function RecipePage({}: Props) {
                 <span>{recipe.servings} servings</span>
               </div>
             </div>
+
+            {/* cooking times */}
+            <div className="mt-4 flex items-center divide-x">
+              <div className="flex items-center pr-4">
+                <ClockIcon className="h-5 w-5 text-gray-11" />
+                <div className="ml-2">
+                  <div className="text-sm font-medium text-gray-12">{recipe.prepTime} min</div>
+                  <div className="text-xs font-semibold leading-none tracking-wider text-gray-10">
+                    PREP
+                  </div>
+                </div>
+              </div>
+
+              <div className="px-4">
+                <div className="text-sm font-medium text-gray-12">{recipe.cookTime} min</div>
+                <div className="text-xs font-semibold leading-none tracking-wider text-gray-10">
+                  COOK
+                </div>
+              </div>
+
+              <div className="pl-4">
+                <div className="text-sm font-medium text-gray-12">
+                  {recipe.prepTime + recipe.cookTime} min
+                </div>
+                <div className="text-xs font-semibold leading-none tracking-wider text-gray-10">
+                  TOTAL
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-12 text-gray-11">{recipe.description}</p>
+
+            <hr className="mx-10 my-12 border-gray-6" />
+
+            <ol className="space-y-10">
+              {recipe.directions.map((direction, index) => (
+                <RecipeDirection
+                  key={direction}
+                  stepNumber={index + 1}
+                  direction={direction}
+                  recipe={recipe}
+                />
+              ))}
+            </ol>
           </div>
+
           <IngredientsSidebar recipe={recipe} />
         </div>
       ) : (

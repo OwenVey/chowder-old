@@ -1,6 +1,6 @@
 import { Button } from '@/components';
+import { Ingredient } from '@/components/RecipeId';
 import { Recipe } from '@/types/chowder';
-import numberToFraction from '@/utils/number-to-fraction';
 import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/react/20/solid';
 import Image from 'next/future/image';
 import { useState } from 'react';
@@ -46,28 +46,15 @@ export default function IngredientsSidebar({ recipe }: Props) {
         </div>
         <ul className="mt-3.5 space-y-4 overflow-y-auto">
           {recipe.ingredients.map((ingredient) => (
-            <li key={ingredient.name}>
-              {/* quantity */}
-              {ingredient.quantity && (
-                <span className="font-bold diagonal-fractions text-primary-10">
-                  {numberToFraction(ingredient.quantity * (servings / recipe.servings))}{' '}
-                </span>
-              )}
-
-              {/* unit */}
-              {ingredient.unit && (
-                <span className="font-medium text-gray-12">
-                  {ingredient.unit}
-                  {ingredient.quantity && ingredient.quantity > 1 ? 's ' : ' '}
-                </span>
-              )}
-
-              {/* name */}
-              <span className="lowercase text-gray-11">{ingredient.name}</span>
-
-              {/* note */}
-              {ingredient.note && <span className="italic text-gray-9"> {ingredient.note}</span>}
-            </li>
+            <Ingredient
+              key={ingredient.name}
+              ingredient={{
+                ...ingredient,
+                quantity: ingredient.quantity
+                  ? ingredient.quantity * (servings / recipe.servings)
+                  : undefined,
+              }}
+            />
           ))}
         </ul>
       </div>
