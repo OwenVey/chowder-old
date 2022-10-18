@@ -25,13 +25,18 @@ export default function ActionsHeader({ recipe }: Props) {
           tooltip="Add to groceries"
         />
         <Button icon={<ShareIcon />} variant="subtle" color="gray" tooltip="Share" />
-        <Button
-          // as={Link}
-          icon={<ArrowTopRightOnSquareIcon />}
-          variant="subtle"
-          color="gray"
-          tooltip="Open link"
-        />
+        {recipe.link && (
+          <Button
+            as="a"
+            href={recipe.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            icon={<ArrowTopRightOnSquareIcon />}
+            variant="subtle"
+            color="gray"
+            tooltip="Open link"
+          />
+        )}
         <Button icon={<PencilSquareIcon />} variant="subtle" color="gray" tooltip="Edit recipe" />
         <AlertDialog
           title={`Are you sure you want to delete "${recipe.name}"?`}
