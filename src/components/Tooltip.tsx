@@ -6,9 +6,10 @@ type Props = {
   children: React.ReactNode;
   label: string;
   side?: 'top' | 'left' | 'right' | 'bottom';
+  sideOffset?: number;
 };
 
-export default function Tooltip({ children, label, side = 'top' }: Props) {
+export default function Tooltip({ children, label, side = 'top', sideOffset = 10 }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -17,7 +18,7 @@ export default function Tooltip({ children, label, side = 'top' }: Props) {
       <AnimatePresence>
         {open ? (
           <TooltipPrimitive.Portal forceMount>
-            <TooltipPrimitive.Content asChild side={side} sideOffset={10} align="center">
+            <TooltipPrimitive.Content asChild side={side} sideOffset={sideOffset} align="center">
               <motion.div
                 className="z-50 inline-flex items-center rounded-md border border-gray-7 bg-gray-1 px-2 py-1.5"
                 initial={{ opacity: 0 }}
