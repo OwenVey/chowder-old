@@ -1,11 +1,13 @@
+/* eslint-disable react/display-name */
+import { Loader, Tooltip } from '@/components';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@/types/polymorphic';
 import clsx from 'clsx';
-import React, { forwardRef } from 'react';
-import { Loader, Tooltip } from '.';
+import React from 'react';
 
 export type ButtonVariant = 'filled' | 'default' | 'light' | 'subtle';
 export type ButtonColor = 'primary' | 'gray' | 'red' | 'green' | 'blue' | 'yellow';
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props {
   variant?: ButtonVariant;
   color?: ButtonColor;
   loading?: boolean;
@@ -15,6 +17,12 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   tooltip?: string;
 }
+
+type ButtonProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<C, Props>;
+
+type ButtonComponent = <C extends React.ElementType = 'button'>(
+  props: ButtonProps<C>,
+) => React.ReactElement | null;
 
 const buttonVariants: Record<ButtonVariant, Record<ButtonColor | 'base', string>> = {
   filled: {
@@ -63,9 +71,10 @@ const classes = {
     'pointer-events-none before:absolute before:-inset-[1px] before:z-10 before:rounded-lg before:bg-gray-1/40',
 };
 
-const Button = forwardRef<HTMLButtonElement, Props>(
-  (
-    {
+export const Button: ButtonComponent = React.forwardRef(
+  <C extends React.ElementType = 'button'>(props: ButtonProps<C>, ref?: PolymorphicRef<C>) => {
+    const {
+      as,
       variant = 'filled',
       color = 'primary',
       loading,
@@ -76,9 +85,8 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       disabled,
       tooltip,
       ...restProps
-    },
-    ref,
-  ) => {
+    } = props;
+
     const cloneAndPassClass = (component: React.ReactElement | undefined, defaultClass: string) => {
       if (!component) return;
       return React.cloneElement(component, {
@@ -86,8 +94,10 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       });
     };
 
+    const As = as || 'button';
+
     const Component = (
-      <button
+      <As
         ref={ref}
         {...restProps}
         disabled={disabled || loading}
@@ -111,7 +121,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
 
         {/* Right Icon */}
         {!loading && cloneAndPassClass(rightIcon, '-mr-1 ml-2 h-5 w-5')}
-      </button>
+      </As>
     );
 
     if (tooltip) {
@@ -123,4 +133,4 @@ const Button = forwardRef<HTMLButtonElement, Props>(
 );
 
 export default Button;
-Button.displayName = 'Button';
+// Button.displayName = 'Button';
