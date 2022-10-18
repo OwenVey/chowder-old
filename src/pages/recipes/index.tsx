@@ -1,5 +1,5 @@
 import { Button, Dropdown, DropdownItem } from '@/components';
-import RecipeCard from '@/components/RecipeCard';
+import { RecipeCard } from '@/components/Recipie';
 import { recipes } from '@/utils/mocks';
 import { ChevronDownIcon, GlobeAltIcon, PencilSquareIcon } from '@heroicons/react/20/solid';
 import {

@@ -50,8 +50,10 @@ export default function AlertDialog({
             </AlertDialogPrimitive.Overlay>
             <AlertDialogPrimitive.Content asChild>
               <motion.div
-                className="fixed bottom-0 z-50 m-4 rounded-lg border border-gray-6 bg-gray-1 p-8 shadow-2xl sm:left-1/2 sm:bottom-auto sm:top-1/2 sm:m-0 sm:w-full sm:max-w-md sm:!-translate-x-1/2 sm:!-translate-y-1/2"
+                className="fixed bottom-0 z-50 m-4 rounded-lg border border-gray-6 bg-gray-1 p-8 shadow-2xl sm:left-1/2 sm:bottom-auto sm:top-1/2 sm:m-0 sm:w-full sm:max-w-md"
                 initial={{
+                  translateX: '-50%',
+                  translateY: '-50%',
                   opacity: 0,
                   scale: 0.95,
                 }}
@@ -62,6 +64,7 @@ export default function AlertDialog({
                 }}
                 exit={{
                   opacity: 0,
+                  scale: 0.95,
                   transition: { ease: 'easeIn', duration: 0.1 },
                 }}
               >

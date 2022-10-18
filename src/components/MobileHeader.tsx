@@ -23,13 +23,7 @@ export default function MobileHeader() {
         <ThemeToggler />
         {session?.user?.image ? (
           <div className="h-8 w-8 overflow-hidden rounded-full">
-            <Image
-              height={32}
-              width={32}
-              src={session.user.image}
-              alt="User profile image"
-              priority
-            />
+            <Image height={32} width={32} src={session.user.image} alt="User profile image" />
           </div>
         ) : (
           <span className="inline-block h-8 w-8 overflow-hidden rounded-full bg-gray-3">

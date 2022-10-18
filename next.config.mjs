@@ -1,5 +1,4 @@
 // @ts-check
-import { env } from './src/env/server.mjs';
 
 /**
  * Don't be scared of the generics here.
@@ -22,6 +21,8 @@ export default defineNextConfig({
       'images.unsplash.com',
       'food.fnr.sndimg.com',
       'hips.hearstapps.com',
+      'vero.cooking',
+      'img.buzzfeed.com',
     ],
   },
 });

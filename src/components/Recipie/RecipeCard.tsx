@@ -1,8 +1,8 @@
+import { Link } from '@/components';
 import { Recipe } from '@/types/chowder';
 import { ClockIcon, ListBulletIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 import Image from 'next/future/image';
-import Link from './Link';
 
 type Props = {
   recipe: Recipe;
@@ -29,10 +29,7 @@ export default function RecipeCard({ recipe, isActive }: Props) {
       )}
       <div className="ml-2 flex flex-col justify-center gap-1">
         <div
-          className={clsx(
-            'font-cool text-lg font-medium',
-            isActive ? 'text-white' : 'text-gray-12',
-          )}
+          className={clsx('font-semibold line-clamp-1', isActive ? 'text-white' : 'text-gray-12')}
         >
           {recipe.name}
         </div>
@@ -59,7 +56,7 @@ export default function RecipeCard({ recipe, isActive }: Props) {
             </span>
           </div>
         </div>
-        <p className={clsx('text-sm', isActive ? 'text-whiteA-11' : 'text-gray-11')}>
+        <p className={clsx('text-sm line-clamp-2', isActive ? 'text-whiteA-11' : 'text-gray-11')}>
           {recipe.description}
         </p>
       </div>

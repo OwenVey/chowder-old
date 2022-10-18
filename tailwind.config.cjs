@@ -24,6 +24,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
     require('./radix-plugin.cjs')({
       colors: {
         gray: radixColors.gray,

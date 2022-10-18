@@ -1,8 +1,9 @@
 export type Recipe = {
   id: string;
   name: string;
+  link?: string;
   description?: string;
-  servings?: number;
+  servings: number;
   prepTime: number;
   cookTime: number;
   ingredients: Ingredient[];
