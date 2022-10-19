@@ -1,4 +1,5 @@
 import { Button } from '@/components';
+import ThemeColorPicker from '@/components/ThemeColorPicker';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
 
@@ -7,7 +8,22 @@ export default function Settings() {
   const [disabled, setDisabled] = useState(false);
 
   return (
-    <main className="flex h-full w-full flex-col items-center justify-center gap-10">
+    <main className="flex h-full w-full flex-col items-center justify-center gap-10 border">
+      <ThemeColorPicker />
+      <div className="flex">
+        <div className="h-20 w-20 bg-primary-1"></div>
+        <div className="h-20 w-20 bg-primary-2"></div>
+        <div className="h-20 w-20 bg-primary-3"></div>
+        <div className="h-20 w-20 bg-primary-4"></div>
+        <div className="h-20 w-20 bg-primary-5"></div>
+        <div className="h-20 w-20 bg-primary-6"></div>
+        <div className="h-20 w-20 bg-primary-7"></div>
+        <div className="h-20 w-20 bg-primary-8"></div>
+        <div className="h-20 w-20 bg-primary-9"></div>
+        <div className="h-20 w-20 bg-primary-10"></div>
+        <div className="h-20 w-20 bg-primary-11"></div>
+        <div className="h-20 w-20 bg-primary-12"></div>
+      </div>
       <div className="flex gap-2">
         <Button onClick={() => setLoading(!loading)}> Loading</Button>
         <Button onClick={() => setDisabled(!disabled)}>Disabled</Button>
