@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default function RecipeDirection({ stepNumber, direction, recipe }: Props) {
-  const words = direction.split(' ').map((text) => {
+  const words = direction.split(/([\s,]+)/).map((text) => {
     const ingredients = recipe.ingredients.filter((ingredient) =>
       ingredient.name
         .split(' ')
@@ -29,27 +29,24 @@ export default function RecipeDirection({ stepNumber, direction, recipe }: Props
       <p className="ml-2 flex-1 text-gray-11">
         {words.map((word, i) => {
           return word.ingredients.length < 1 ? (
-            <Fragment key={`${word}${i}`}>{word.text + ' '}</Fragment>
+            <Fragment key={i}>{word.text}</Fragment>
           ) : (
-            <>
-              <Popover
-                trigger={
-                  <span
-                    key={`${word}${i}`}
-                    className="cursor-pointer rounded border border-gray-5 bg-gray-4 px-1 py-0.5 font-medium leading-none text-gray-12 hover:border-gray-6 hover:bg-gray-5 active:bg-gray-6"
-                  >
-                    {word.text}
-                  </span>
-                }
-              >
-                <ul>
-                  {word.ingredients.map((ingredient) => (
-                    <Ingredient key={ingredient.name} ingredient={ingredient} />
-                  ))}
-                </ul>
-              </Popover>
-              <> </>
-            </>
+            <Popover
+              trigger={
+                <span
+                  key={i}
+                  className="cursor-pointer rounded border border-gray-5 bg-gray-4 px-1 py-0.5 font-medium leading-none text-gray-12 hover:border-gray-6 hover:bg-gray-5 active:bg-gray-6"
+                >
+                  {word.text}
+                </span>
+              }
+            >
+              <ul>
+                {word.ingredients.map((ingredient) => (
+                  <Ingredient key={ingredient.name} ingredient={ingredient} />
+                ))}
+              </ul>
+            </Popover>
           );
         })}
       </p>
