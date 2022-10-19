@@ -14,9 +14,14 @@ export default function RecipePage({}: Props) {
   const { query } = useRouter();
   const { data: recipe, isLoading } = trpc.example.getRecipeById.useQuery(query.id as string);
 
-  if (isLoading) return <Loader className="h-10 w-10 text-primary-9" />;
-
-  if (!recipe) return <div>No Recipe Found</div>;
+  if (isLoading || !recipe) {
+    return (
+      <div className="flex h-full items-center justify-center">
+        {isLoading && <Loader className="h-8 w-8 text-primary-9" />}
+        {!recipe && <div className="text-gray-11">No Recipe Found</div>}
+      </div>
+    );
+  }
 
   return (
     <>
