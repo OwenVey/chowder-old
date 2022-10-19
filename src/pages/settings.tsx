@@ -8,7 +8,7 @@ export default function Settings() {
   const [disabled, setDisabled] = useState(false);
 
   return (
-    <main className="flex h-full w-full flex-col items-center justify-center gap-10 border">
+    <main className="flex h-full w-full flex-col items-center justify-center gap-10">
       <ThemeColorPicker />
       <div className="flex">
         <div className="h-20 w-20 bg-primary-1"></div>
