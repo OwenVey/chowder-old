@@ -1,4 +1,4 @@
-import { Button, Dropdown, DropdownItem } from '@/components';
+import { Button, Dialog, Dropdown, DropdownItem } from '@/components';
 import { RecipeCard } from '@/components/Recipie';
 import { recipes } from '@/utils/mocks';
 import { ChevronDownIcon, GlobeAltIcon, PencilSquareIcon } from '@heroicons/react/20/solid';
@@ -48,7 +48,18 @@ function RecipesLayout({ children }: Props) {
                 />
               }
             >
-              <DropdownItem icon={<PencilSquareIcon />}>Create New</DropdownItem>
+              <Dialog
+                trigger={
+                  <DropdownItem
+                    onSelect={(event) => event.preventDefault()}
+                    icon={<PencilSquareIcon />}
+                  >
+                    Create New
+                  </DropdownItem>
+                }
+              >
+                test
+              </Dialog>
               <DropdownItem icon={<GlobeAltIcon />}>Import from URL</DropdownItem>
             </Dropdown>
           </div>

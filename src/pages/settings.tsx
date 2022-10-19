@@ -1,4 +1,4 @@
-import { Button } from '@/components';
+import { Button, Dialog } from '@/components';
 import ThemeColorPicker from '@/components/ThemeColorPicker';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
@@ -23,6 +23,9 @@ export default function Settings() {
         <div className="h-20 w-20 bg-primary-10"></div>
         <div className="h-20 w-20 bg-primary-11"></div>
         <div className="h-20 w-20 bg-primary-12"></div>
+      </div>
+      <div>
+        <Dialog trigger={<Button>Open Modal</Button>}></Dialog>
       </div>
       <div className="flex gap-2">
         <Button onClick={() => setLoading(!loading)}> Loading</Button>
