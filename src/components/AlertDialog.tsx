@@ -39,7 +39,7 @@ export default function AlertDialog({
           <AlertDialogPrimitive.Portal forceMount>
             <AlertDialogPrimitive.Overlay asChild>
               <motion.div
-                className="fixed inset-0 z-20 bg-gray-8/50"
+                className="fixed inset-0 z-10 bg-gray-8/50"
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
@@ -49,40 +49,45 @@ export default function AlertDialog({
               />
             </AlertDialogPrimitive.Overlay>
             <AlertDialogPrimitive.Content asChild>
-              <motion.div
-                className="fixed bottom-0 z-50 m-4 rounded-lg border border-gray-6 bg-gray-1 p-8 shadow-2xl sm:left-1/2 sm:bottom-auto sm:top-1/2 sm:m-0 sm:w-full sm:max-w-md"
-                initial={{
-                  translateX: '-50%',
-                  translateY: '-50%',
-                  opacity: 0,
-                  scale: 0.95,
-                }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  transition: { ease: 'easeOut', duration: 0.2 },
-                }}
-                exit={{
-                  opacity: 0,
-                  scale: 0.95,
-                  transition: { ease: 'easeIn', duration: 0.1 },
-                }}
-              >
-                <AlertDialogPrimitive.Title className="font-medium text-gray-12">
-                  {title}
-                </AlertDialogPrimitive.Title>
-                <AlertDialogPrimitive.Description className="mt-2 text-sm font-normal text-gray-11">
-                  {description}
-                </AlertDialogPrimitive.Description>
-                <div className="mt-4 flex justify-end space-x-2">
-                  <AlertDialogPrimitive.Cancel asChild>
-                    <Button variant="default">Cancel</Button>
-                  </AlertDialogPrimitive.Cancel>
-                  <AlertDialogPrimitive.Action asChild>
-                    <Button color={variantToColor[variant]}>{confirmText}</Button>
-                  </AlertDialogPrimitive.Action>
+              <div className="fixed inset-0 z-10 overflow-y-auto">
+                <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                  <motion.div
+                    className="w-full rounded-lg bg-gray-1 px-4 pt-5 pb-4 text-left shadow-xl sm:my-8 sm:max-w-md sm:p-6"
+                    initial={{
+                      y: 16,
+                      opacity: 0,
+                      scale: 0.95,
+                    }}
+                    animate={{
+                      y: 0,
+                      opacity: 1,
+                      scale: 1,
+                      transition: { ease: 'easeInOut', duration: 0.2 },
+                    }}
+                    exit={{
+                      y: 16,
+                      opacity: 0,
+                      scale: 0.95,
+                      transition: { ease: 'easeIn', duration: 0.1 },
+                    }}
+                  >
+                    <AlertDialogPrimitive.Title className="font-medium text-gray-12">
+                      {title}
+                    </AlertDialogPrimitive.Title>
+                    <AlertDialogPrimitive.Description className="mt-2 text-sm font-normal text-gray-11">
+                      {description}
+                    </AlertDialogPrimitive.Description>
+                    <div className="mt-4 flex justify-end space-x-2">
+                      <AlertDialogPrimitive.Cancel asChild>
+                        <Button variant="default">Cancel</Button>
+                      </AlertDialogPrimitive.Cancel>
+                      <AlertDialogPrimitive.Action asChild>
+                        <Button color={variantToColor[variant]}>{confirmText}</Button>
+                      </AlertDialogPrimitive.Action>
+                    </div>
+                  </motion.div>
                 </div>
-              </motion.div>
+              </div>
             </AlertDialogPrimitive.Content>
           </AlertDialogPrimitive.Portal>
         ) : null}
