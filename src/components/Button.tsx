@@ -16,7 +16,7 @@ const buttonClasses = cva(
         true: 'pointer-events-none before:absolute before:-inset-[1px] before:z-10 before:rounded-lg before:bg-gray-1/40',
       },
       variant: {
-        filled: 'shadow-sm',
+        filled: 'shadow-sm border-transparent',
         default:
           'border-gray-7 bg-white text-gray-12 shadow-sm hover:border-gray-8 hover:bg-gray-2 active:bg-gray-3 dark:bg-gray-4 dark:hover:bg-gray-5 dark:active:bg-gray-6',
         light: 'border-transparent shadow-sm',
@@ -35,33 +35,32 @@ const buttonClasses = cva(
       {
         variant: 'filled',
         color: 'primary',
-        class:
-          'border-transparent bg-primary-9 text-white hover:bg-primary-10 active:bg-primary-11',
+        class: 'bg-primary-9 text-white hover:bg-primary-10 active:bg-primary-11',
       },
       {
         variant: 'filled',
         color: 'gray',
-        class: 'border-gray-7 bg-gray-6 text-gray-12 hover:bg-gray-7 active:bg-gray-8',
+        class: 'bg-gray-9 text-white hover:bg-gray-10 active:bg-gray-11',
       },
       {
         variant: 'filled',
         color: 'red',
-        class: 'border-transparent bg-red-9 text-white hover:bg-red-10 active:bg-red-11',
+        class: 'bg-red-9 text-white hover:bg-red-10 active:bg-red-11',
       },
       {
         variant: 'filled',
         color: 'green',
-        class: 'border-transparent bg-green-9 text-white hover:bg-green-10 active:bg-green-11',
+        class: 'bg-green-9 text-white hover:bg-green-10 active:bg-green-11',
       },
       {
         variant: 'filled',
         color: 'blue',
-        class: 'border-transparent bg-blue-9 text-white hover:bg-blue-10 active:bg-blue-11',
+        class: 'bg-blue-9 text-white hover:bg-blue-10 active:bg-blue-11',
       },
       {
         variant: 'filled',
         color: 'yellow',
-        class: 'border-transparent bg-yellow-9 text-black hover:bg-yellow-10 active:bg-yellow-11',
+        class: 'bg-yellow-9 text-black hover:bg-yellow-10 active:bg-yellow-11',
       },
       {
         variant: 'light',
