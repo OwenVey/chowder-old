@@ -32,11 +32,9 @@ export default function RecipeDirection({ stepNumber, direction, recipe }: Props
             <Fragment key={i}>{word.text}</Fragment>
           ) : (
             <Popover
+              key={i}
               trigger={
-                <span
-                  key={i}
-                  className="cursor-pointer rounded border border-gray-5 bg-gray-4 px-1 py-0.5 font-medium leading-none text-gray-12 hover:border-gray-6 hover:bg-gray-5 active:bg-gray-6"
-                >
+                <span className="cursor-pointer rounded border border-gray-5 bg-gray-4 px-1 py-0.5 font-medium leading-none text-gray-12 hover:border-gray-6 hover:bg-gray-5 active:bg-gray-6">
                   {word.text}
                 </span>
               }
