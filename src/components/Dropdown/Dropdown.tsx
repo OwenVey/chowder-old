@@ -28,7 +28,10 @@ export default function Dropdown({
   return (
     <DropdownMenu.Root
       open={isOpen()}
-      onOpenChange={onOpenChange === undefined ? _setOpen : onOpenChange}
+      onOpenChange={(isOpen) => {
+        onOpenChange !== undefined && onOpenChange(isOpen);
+        _setOpen(isOpen);
+      }}
     >
       <DropdownMenu.Trigger asChild>{trigger}</DropdownMenu.Trigger>
 

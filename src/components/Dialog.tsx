@@ -32,7 +32,10 @@ export default function AlertDialog({
   return (
     <DialogPrimitive.Root
       open={isOpen()}
-      onOpenChange={onOpenChange === undefined ? _setOpen : onOpenChange}
+      onOpenChange={(isOpen) => {
+        onOpenChange !== undefined && onOpenChange(isOpen);
+        _setOpen(isOpen);
+      }}
     >
       <DialogPrimitive.Trigger asChild>{trigger}</DialogPrimitive.Trigger>
 
