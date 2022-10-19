@@ -9,17 +9,35 @@ type Props = {
   description?: string;
   confirmText?: string;
   children?: React.ReactNode;
+  hidden?: boolean;
+  open?: boolean;
+  onOpenChange?(open: boolean): void;
 };
 
-export default function AlertDialog({ trigger, title, description, children }: Props) {
-  const [open, setOpen] = useState(false);
+export default function AlertDialog({
+  trigger,
+  title,
+  description,
+  children,
+  hidden,
+  open,
+  onOpenChange,
+}: Props) {
+  const [_open, _setOpen] = useState(false);
+
+  const isOpen = () => {
+    return open === undefined ? _open : open;
+  };
 
   return (
-    <DialogPrimitive.Root open={open} onOpenChange={setOpen}>
+    <DialogPrimitive.Root
+      open={isOpen()}
+      onOpenChange={onOpenChange === undefined ? _setOpen : onOpenChange}
+    >
       <DialogPrimitive.Trigger asChild>{trigger}</DialogPrimitive.Trigger>
 
       <AnimatePresence>
-        {open ? (
+        {isOpen() ? (
           <DialogPrimitive.Portal forceMount>
             <DialogPrimitive.Overlay asChild>
               <motion.div
@@ -32,7 +50,7 @@ export default function AlertDialog({ trigger, title, description, children }: P
                 exit={{ opacity: 0, transition: { ease: 'easeIn', duration: 0.2 } }}
               />
             </DialogPrimitive.Overlay>
-            <DialogPrimitive.Content asChild>
+            <DialogPrimitive.Content asChild hidden={hidden}>
               <div className="fixed inset-0 z-10 overflow-y-auto">
                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                   <motion.div

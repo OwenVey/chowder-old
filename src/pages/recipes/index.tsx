@@ -10,7 +10,7 @@ import {
 } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 
 type Props = {
   children: React.ReactNode;
@@ -18,6 +18,7 @@ type Props = {
 
 function RecipesLayout({ children }: Props) {
   const { query } = useRouter();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <div className="relative z-0 flex flex-1 overflow-hidden">
@@ -38,6 +39,7 @@ function RecipesLayout({ children }: Props) {
             <Button icon={<FunnelIcon />} variant="subtle" color="gray" tooltip="Filter" />
 
             <Dropdown
+              hidden={isDialogOpen}
               trigger={
                 <Button
                   icon={<PlusIcon />}
@@ -49,6 +51,8 @@ function RecipesLayout({ children }: Props) {
               }
             >
               <Dialog
+                open={isDialogOpen}
+                onOpenChange={setIsDialogOpen}
                 trigger={
                   <DropdownItem
                     onSelect={(event) => event.preventDefault()}
