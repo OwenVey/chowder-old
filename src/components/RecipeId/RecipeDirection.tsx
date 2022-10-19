@@ -10,11 +10,14 @@ type Props = {
 };
 
 export default function RecipeDirection({ stepNumber, direction, recipe }: Props) {
+  const highlightFilters = ['and', 'or'];
+
   const words = direction.split(/([\s,]+)/).map((text) => {
     const ingredients = recipe.ingredients.filter((ingredient) =>
       ingredient.name
         .split(' ')
         .map((i) => i.toLowerCase())
+        .filter((i) => !highlightFilters.includes(i))
         .includes(text.toLowerCase()),
     );
     return { text, ingredients };
