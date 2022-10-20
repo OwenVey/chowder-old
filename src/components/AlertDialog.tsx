@@ -1,7 +1,7 @@
+import { Button } from '@/components';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
-import Button, { ButtonColor } from './Button';
 
 type AlertDialogVariant = 'primary' | 'warning' | 'danger' | 'success' | 'info';
 
@@ -13,13 +13,14 @@ type Props = {
   variant?: AlertDialogVariant;
 };
 
-const variantToColor: Record<AlertDialogVariant, ButtonColor> = {
-  primary: 'primary',
-  warning: 'yellow',
-  danger: 'red',
-  success: 'green',
-  info: 'blue',
-};
+const variantToColor: Record<AlertDialogVariant, 'primary' | 'yellow' | 'red' | 'green' | 'blue'> =
+  {
+    primary: 'primary',
+    warning: 'yellow',
+    danger: 'red',
+    success: 'green',
+    info: 'blue',
+  };
 
 export default function AlertDialog({
   trigger,
