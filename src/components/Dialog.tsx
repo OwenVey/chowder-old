@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 type Props = {
   trigger: React.ReactNode;
   title?: string;
-  description?: string;
   confirmText?: string;
   children?: React.ReactNode;
   hidden?: boolean;
@@ -18,7 +17,6 @@ type Props = {
 export default function AlertDialog({
   trigger,
   title,
-  description,
   children,
   hidden,
   open,
@@ -85,9 +83,6 @@ export default function AlertDialog({
                     <DialogPrimitive.Title className="font-medium text-gray-12">
                       {title}
                     </DialogPrimitive.Title>
-                    <DialogPrimitive.Description className="mt-2 text-sm font-normal text-gray-11">
-                      {description}
-                    </DialogPrimitive.Description>
                     {children}
                     <div className="mt-4 flex justify-end space-x-2">
                       <DialogPrimitive.Close asChild>
