@@ -18,5 +18,5 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
-  "tailwindCSS.experimental.classRegex": [["styled\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]]
+  "tailwindCSS.experimental.classRegex": [["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]]
 }
