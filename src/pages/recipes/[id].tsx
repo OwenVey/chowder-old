@@ -17,7 +17,7 @@ export default function RecipePage({}: Props) {
   if (isLoading)
     return (
       <div className="flex h-full items-center justify-center">
-        <Loader className="h-8 w-8 text-primary-9" />
+        <Loader className="h-8 w-8 text-primary-11" />
       </div>
     );
 
@@ -68,7 +68,7 @@ export default function RecipePage({}: Props) {
             </div>
 
             {/* cooking times */}
-            <div className="mt-4 flex items-center divide-x">
+            <div className="mt-4 flex items-center divide-x divide-gray-6">
               <div className="flex items-center pr-4">
                 <ClockIcon className="h-5 w-5 text-gray-11" />
                 <div className="ml-2">
