@@ -1,4 +1,5 @@
 import { Button } from '@/components';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
@@ -57,7 +58,7 @@ export default function AlertDialog({
               <div className="fixed inset-0 z-10 overflow-y-auto">
                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                   <motion.div
-                    className="w-full rounded-lg bg-gray-1 px-4 pt-5 pb-4 text-left shadow-xl sm:my-8 sm:max-w-md sm:p-6"
+                    className="relative w-full rounded-lg bg-gray-1 px-4 pt-5 pb-4 text-left shadow-xl sm:my-8 sm:max-w-md sm:p-6"
                     initial={{
                       y: 16,
                       opacity: 0,
@@ -76,6 +77,11 @@ export default function AlertDialog({
                       transition: { ease: 'easeIn', duration: 0.1 },
                     }}
                   >
+                    <div className="absolute top-0 right-0 hidden pt-2 pr-2 sm:block">
+                      <DialogPrimitive.Close asChild>
+                        <Button icon={<XMarkIcon />} variant="subtle" color="gray" />
+                      </DialogPrimitive.Close>
+                    </div>
                     <DialogPrimitive.Title className="font-medium text-gray-12">
                       {title}
                     </DialogPrimitive.Title>
