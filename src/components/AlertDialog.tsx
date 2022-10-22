@@ -72,7 +72,7 @@ export default function AlertDialog({
                       transition: { ease: 'easeIn', duration: 0.1 },
                     }}
                   >
-                    <AlertDialogPrimitive.Title className="font-medium text-gray-12">
+                    <AlertDialogPrimitive.Title className="text-lg font-medium leading-6 text-gray-12">
                       {title}
                     </AlertDialogPrimitive.Title>
                     <AlertDialogPrimitive.Description className="mt-2 text-sm font-normal text-gray-11">

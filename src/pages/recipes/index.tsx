@@ -1,5 +1,5 @@
-import { Button, Dialog, Dropdown, DropdownItem } from '@/components';
-import { RecipeCard } from '@/components/Recipie';
+import { Button, Dropdown, DropdownItem } from '@/components';
+import { NewRecipeModal, RecipeCard } from '@/components/Recipie';
 import { recipes } from '@/utils/mocks';
 import { ChevronDownIcon, GlobeAltIcon, PencilSquareIcon } from '@heroicons/react/20/solid';
 import {
@@ -50,7 +50,7 @@ function RecipesLayout({ children }: Props) {
                 />
               }
             >
-              <Dialog
+              <NewRecipeModal
                 onOpenChange={setIsDialogOpen}
                 trigger={
                   <DropdownItem
@@ -60,26 +60,13 @@ function RecipesLayout({ children }: Props) {
                     Create New
                   </DropdownItem>
                 }
-              >
-                test
-              </Dialog>
+              />
+
               <DropdownItem icon={<GlobeAltIcon />}>Import from URL</DropdownItem>
             </Dropdown>
           </div>
         </div>
         <div className="min-h-0 flex-1 space-y-1 overflow-y-auto p-3">
-          {recipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
-          ))}
-          {recipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
-          ))}
-          {recipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
-          ))}
-          {recipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
-          ))}
           {recipes.map((recipe) => (
             <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
           ))}
