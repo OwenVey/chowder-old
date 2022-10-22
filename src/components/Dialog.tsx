@@ -80,7 +80,7 @@ export default function AlertDialog({
                         <Button icon={<XMarkIcon />} variant="subtle" color="gray" />
                       </DialogPrimitive.Close>
                     </div>
-                    <DialogPrimitive.Title className="text-lg font-medium leading-6 text-gray-12">
+                    <DialogPrimitive.Title className="mb-4 text-lg font-medium leading-6 text-gray-12">
                       {title}
                     </DialogPrimitive.Title>
                     {children}

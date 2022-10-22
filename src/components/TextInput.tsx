@@ -1,10 +1,9 @@
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 import { forwardRef, useId } from 'react';
+import { UseFormRegister } from 'react-hook-form';
 
-type Props = {
-  value: string;
-  onChange: (val: string) => void;
+export type TextInputProps = {
   label?: string;
   description?: string;
   placeholder?: string;
@@ -13,13 +12,12 @@ type Props = {
   error?: string;
   leftIcon?: React.ReactElement;
   rightIcon?: React.ReactElement;
+  register?: UseFormRegister<any>;
 };
 
-const TextInput = forwardRef<HTMLInputElement, Props>(
+const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
-      value,
-      onChange,
       label,
       description,
       placeholder,
@@ -28,6 +26,7 @@ const TextInput = forwardRef<HTMLInputElement, Props>(
       error,
       leftIcon,
       rightIcon,
+      ...restProps
     },
     ref,
   ) => {
@@ -58,11 +57,10 @@ const TextInput = forwardRef<HTMLInputElement, Props>(
 
           {/* Input */}
           <input
+            {...restProps}
             ref={ref}
             type="text"
             id={id}
-            value={value}
-            onChange={({ target: { value } }) => onChange(value)}
             className={clsx(
               'block w-full truncate rounded-lg border-gray-7 bg-white text-gray-12 placeholder-gray-9 hover:border-gray-8 dark:bg-gray-1 sm:text-sm',
               'disabled:pointer-events-none disabled:border-gray-6 disabled:bg-gray-3 dark:disabled:bg-gray-3',
@@ -93,7 +91,7 @@ const TextInput = forwardRef<HTMLInputElement, Props>(
         </div>
 
         {/* Error Message */}
-        {error && <p className="mt-2 text-sm text-red-9">{error}</p>}
+        {error && <p className="mt-1 text-sm text-red-9">{error}</p>}
       </div>
     );
   },
