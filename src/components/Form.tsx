@@ -9,8 +9,6 @@ type Props<T extends FieldValues> = {
 export default function Form<T extends FieldValues>({ children, onSubmit }: Props<T>) {
   const { handleSubmit, register, formState } = useForm<T>();
 
-  console.log(children);
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {Array.isArray(children)
