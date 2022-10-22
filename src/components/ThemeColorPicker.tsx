@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import * as radixColors from '@radix-ui/colors';
 import clsx from 'clsx';
 import { useState } from 'react';
@@ -29,10 +30,12 @@ export default function ThemeColorPicker() {
 
     for (let i = 1; i <= 12; i++) {
       const lightHsl = /\(([^)]+)\)/
+        // @ts-ignore
         .exec(radixColors[color][`${color}${i}`])
         ?.pop()
         ?.replaceAll(',', '');
       const darkHsl = /\(([^)]+)\)/
+        // @ts-ignore
         .exec(radixColors[`${color}Dark`][`${color}${i}`])
         ?.pop()
         ?.replaceAll(',', '');
@@ -62,7 +65,9 @@ export default function ThemeColorPicker() {
           key={color}
           className={clsx('flex h-14 w-14 items-center justify-center rounded-full border-2')}
           style={{
+            // @ts-ignore
             backgroundColor: radixColors[color][`${color}9`],
+            // @ts-ignore
             borderColor: radixColors[color][`${color}8`],
           }}
         />
