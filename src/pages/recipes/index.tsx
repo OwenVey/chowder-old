@@ -51,6 +51,7 @@ function RecipesLayout({ children }: Props) {
               }
             >
               <NewRecipeModal
+                open={isDialogOpen}
                 onOpenChange={setIsDialogOpen}
                 trigger={
                   <DropdownItem

@@ -12,7 +12,7 @@ type Props = {
 
 export default function RecipePage({}: Props) {
   const { query } = useRouter();
-  const { data: recipe, isLoading } = trpc.example.getRecipeById.useQuery(query.id as string);
+  const { data: recipe, isLoading } = trpc.recipe.getById.useQuery(query.id as string);
 
   if (isLoading)
     return (

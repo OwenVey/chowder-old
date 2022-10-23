@@ -1,4 +1,3 @@
-import { recipes } from '@/utils/mocks';
 import { z } from 'zod';
 import { t } from '../trpc';
 
@@ -12,8 +11,5 @@ export const exampleRouter = t.router({
     }),
   getAll: t.procedure.query(({ ctx }) => {
     return ctx.prisma.example.findMany();
-  }),
-  getRecipeById: t.procedure.input(z.string()).query(({ input: id }) => {
-    return recipes.find((recipe) => recipe.id === id);
   }),
 });
