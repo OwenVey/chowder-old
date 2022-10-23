@@ -64,7 +64,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
           }}
           onMouseDown={(e) => e.preventDefault()}
           disabled={restProps.disabled || value >= max}
-          className="group flex w-6 flex-1 items-center justify-center rounded-tr-[0.435rem] border-l border-b border-gray-7 hover:bg-gray-3 active:bg-gray-4 disabled:pointer-events-none disabled:bg-gray-3"
+          className="group flex w-6 flex-1 items-center justify-center rounded-tr-[0.435rem] border-l border-b border-gray-7 hover:bg-gray-3 focus:z-10 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-9 active:bg-gray-4 disabled:pointer-events-none disabled:bg-gray-3"
         >
           <ChevronUpIcon className="h-4 w-4 text-gray-9 group-hover:text-gray-11" />
         </button>
@@ -76,7 +76,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
           }}
           onMouseDown={(e) => e.preventDefault()}
           disabled={restProps.disabled || value <= min}
-          className="group flex w-6 flex-1 items-center justify-center rounded-br-[0.435rem] border-l border-gray-7 hover:bg-gray-3 active:bg-gray-4 disabled:pointer-events-none disabled:bg-gray-3"
+          className="group flex w-6 flex-1 items-center justify-center rounded-br-[0.435rem] border-l border-gray-7 hover:bg-gray-3 focus:z-10 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-9 active:bg-gray-4 disabled:pointer-events-none disabled:bg-gray-3"
         >
           <ChevronDownIcon className="h-4 w-4 text-gray-9 group-hover:text-gray-11" />
         </button>
