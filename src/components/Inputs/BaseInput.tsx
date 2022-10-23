@@ -1,31 +1,28 @@
-import { ExclamationCircleIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
-import { forwardRef, useId } from 'react';
-import { UseFormRegister } from 'react-hook-form';
+import { forwardRef, InputHTMLAttributes, useId } from 'react';
 
-export type TextInputProps = {
+export interface BaseInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   description?: string;
   placeholder?: string;
   disabled?: boolean;
-  required?: boolean;
+  showAsterisk?: boolean;
   error?: string;
-  leftIcon?: React.ReactElement;
-  rightIcon?: React.ReactElement;
-  register?: UseFormRegister<any>;
-};
+  icon?: React.ReactElement;
+  rightSection?: React.ReactNode;
+}
 
-const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
   (
     {
       label,
       description,
       placeholder,
       disabled,
-      required,
+      showAsterisk,
       error,
-      leftIcon,
-      rightIcon,
+      icon,
+      rightSection,
       ...restProps
     },
     ref,
@@ -43,15 +40,15 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             )}
           >
             {label}
-            {required && <span className="text-red-9"> *</span>}
+            {showAsterisk && <span className="text-red-9"> *</span>}
           </label>
         )}
         {description && <p className="mb-1 text-xs text-gray-9">{description}</p>}
         <div className="relative rounded-lg shadow-sm">
           {/* Left Icon */}
-          {leftIcon && (
+          {icon && (
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <span className="h-5 w-5 text-gray-9">{leftIcon}</span>
+              <span className="h-5 w-5 text-gray-9">{icon}</span>
             </div>
           )}
 
@@ -67,27 +64,15 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               'focus:border-primary-9 focus:ring-primary-9',
               error &&
                 'border-red-7 text-red-12 placeholder-red-8 hover:border-red-8 focus:border-red-9 focus:ring-red-9',
-              leftIcon && 'pl-10',
-              rightIcon && 'pr-10',
+              icon && 'pl-10',
+              rightSection && 'pr-10',
             )}
-            required={required}
             placeholder={placeholder}
             disabled={disabled}
           />
 
-          {/* Right Icon */}
-          {rightIcon && !error && (
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <span className="h-5 w-5 text-gray-9">{rightIcon}</span>
-            </div>
-          )}
-
-          {/* Error Icon */}
-          {error && (
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-              <ExclamationCircleIcon className="h-5 w-5 text-red-9" aria-hidden="true" />
-            </div>
-          )}
+          {/* Right Section */}
+          {rightSection && <div className="absolute inset-y-0 right-0 m-px">{rightSection}</div>}
         </div>
 
         {/* Error Message */}
@@ -97,4 +82,4 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   },
 );
 
-export default TextInput;
+export default BaseInput;

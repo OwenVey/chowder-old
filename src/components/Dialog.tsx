@@ -84,11 +84,11 @@ export default function AlertDialog({
                       {title}
                     </DialogPrimitive.Title>
                     {children}
-                    <div className="mt-4 flex justify-end space-x-2">
+                    {/* <div className="mt-4 flex justify-end space-x-2">
                       <DialogPrimitive.Close asChild>
                         <Button variant="default">Cancel</Button>
                       </DialogPrimitive.Close>
-                    </div>
+                    </div> */}
                   </motion.div>
                 </div>
               </div>

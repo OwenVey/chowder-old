@@ -1,4 +1,4 @@
-import { Button, Dialog, Form, FormTextInput, TextInput } from '@/components';
+import { Button, Dialog, Form, FormNumberInput, FormTextInput, TextInput } from '@/components';
 import { Recipe } from '@/types/chowder';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -42,12 +42,15 @@ export default function NewRecipeModal({ trigger, onOpenChange }: Props) {
         <Button>Submit</Button>
       </form>
 
-      <Form<Recipe> onSubmit={onSubmit2}>
+      <Form<Recipe> onSubmit={onSubmit2} className="mt-10 flex flex-col gap-4">
         <FormTextInput<Recipe>
           label="Name"
           name="name"
+          showAsterisk
           options={{ required: 'This is a required field' }}
         />
+        <FormTextInput<Recipe> label="Description" name="description" />
+        <FormNumberInput<Recipe> label="Servings" name="servings" min={0} />
         <Button>Submit</Button>
       </Form>
     </Dialog>
