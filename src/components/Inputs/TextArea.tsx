@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { forwardRef, InputHTMLAttributes, useId } from 'react';
+import { forwardRef, TextareaHTMLAttributes, useId } from 'react';
 
-export interface BaseInputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   labelNote?: string;
   description?: string;
@@ -9,12 +9,10 @@ export interface BaseInputProps extends InputHTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
   showAsterisk?: boolean;
   error?: string;
-  icon?: React.ReactElement;
-  rightSection?: React.ReactNode;
   className?: string;
 }
 
-const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
+const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
     {
       label,
@@ -24,8 +22,6 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
       disabled,
       showAsterisk,
       error,
-      icon,
-      rightSection,
       className,
       ...restProps
     },
@@ -58,18 +54,10 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
         {description && <p className="mb-1 text-xs text-gray-9">{description}</p>}
 
         <div className="relative rounded-lg shadow-sm">
-          {/* Left Icon */}
-          {icon && (
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <span className="h-5 w-5 text-gray-9">{icon}</span>
-            </div>
-          )}
-
           {/* Input */}
-          <input
+          <textarea
             {...restProps}
             ref={ref}
-            type="text"
             id={id}
             className={clsx(
               'block w-full truncate rounded-lg border-gray-7 bg-white text-gray-12 placeholder-gray-9 hover:border-gray-8 dark:bg-gray-1 sm:text-sm',
@@ -77,15 +65,10 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
               'focus:border-primary-9 focus:ring-primary-9',
               error &&
                 'border-red-7 text-red-12 placeholder-red-8 hover:border-red-8 focus:border-red-9 focus:ring-red-9',
-              icon && 'pl-10',
-              rightSection && 'pr-10',
             )}
             placeholder={placeholder}
             disabled={disabled}
           />
-
-          {/* Right Section */}
-          {rightSection && <div className="absolute inset-y-0 right-0 m-px">{rightSection}</div>}
         </div>
 
         {/* Error Message */}
@@ -95,4 +78,4 @@ const BaseInput = forwardRef<HTMLInputElement, BaseInputProps>(
   },
 );
 
-export default BaseInput;
+export default TextArea;

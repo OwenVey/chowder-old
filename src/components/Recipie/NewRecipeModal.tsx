@@ -1,4 +1,4 @@
-import { Button, Dialog, Form, FormNumberInput, FormTextInput } from '@/components';
+import { Button, Dialog, Form, FormNumberInput, FormTextArea, FormTextInput } from '@/components';
 import { Recipe } from '@/types/chowder';
 import { trpc } from '@/utils/trpc';
 import { SubmitHandler } from 'react-hook-form';
@@ -35,7 +35,7 @@ export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange} title="New Recipe" trigger={trigger}>
+    <Dialog open={open} onOpenChange={onOpenChange} title="New Recipe" trigger={trigger} size="lg">
       <Form<Recipe>
         onSubmit={onSubmit}
         className="flex flex-col gap-4"
@@ -55,19 +55,35 @@ export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
           showAsterisk
           options={{ required: 'This is a required field' }}
         />
-        <FormTextInput<Recipe> label="Description" name="description" />
-        <FormNumberInput<Recipe>
-          label="Servings"
-          name="servings"
-          showAsterisk
-          min={1}
-          defaultValue={1}
-        />
+        <FormTextArea<Recipe> label="Description" name="description" />
+
         <div className="flex gap-4">
-          <FormNumberInput<Recipe> label="Prep Time (min)" name="prepTime" showAsterisk min={0} />
-          <FormNumberInput<Recipe> label="Cook time (min)" name="cookTime" showAsterisk min={0} />
+          <FormNumberInput<Recipe>
+            className="flex-1"
+            label="Servings"
+            name="servings"
+            showAsterisk
+            min={1}
+            defaultValue={1}
+          />
+          <FormNumberInput<Recipe>
+            className="flex-1"
+            label="Prep Time"
+            labelNote="(min)"
+            name="prepTime"
+            showAsterisk
+            min={0}
+          />
+          <FormNumberInput<Recipe>
+            className="flex-1"
+            label="Cook time"
+            labelNote="(min)"
+            name="cookTime"
+            showAsterisk
+            min={0}
+          />
         </div>
-        <FormTextInput<Recipe> label="Notes" name="notes" />
+        <FormTextArea<Recipe> label="Notes" name="notes" />
 
         <Button loading={isLoading}>Submit</Button>
       </Form>

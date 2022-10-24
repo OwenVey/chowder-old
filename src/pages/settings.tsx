@@ -1,4 +1,4 @@
-import { Button, NumberInput, TextInput } from '@/components';
+import { Button, TextArea, TextInput } from '@/components';
 import ThemeColorPicker from '@/components/ThemeColorPicker';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
@@ -469,13 +469,20 @@ export default function Settings() {
       )}
 
       {showInputs && (
-        <div className="flex flex-col items-center justify-center gap-10 p-10">
+        <div className="flex flex-col items-center justify-center gap-4 p-10">
           <TextInput label="Text" icon={<MagnifyingGlassIcon />} />
           <TextInput label="Text" icon={<MagnifyingGlassIcon />} disabled />
           <TextInput label="Text" icon={<MagnifyingGlassIcon />} error="There is an error" />
-          <NumberInput label="Number" min={0} max={50} step={5} defaultValue={10} />
+          {/* <NumberInput label="Number" min={0} max={50} step={5} defaultValue={10} />
           <NumberInput label="Number" disabled />
-          <NumberInput label="Number" error="There is an error" />
+        <NumberInput label="Number" error="There is an error" /> */}
+          <TextInput label="Text" />
+          <TextArea
+            label="TextArea"
+            description="test desc"
+            error="There is an error"
+            placeholder="Placeholder"
+          />
         </div>
       )}
     </main>

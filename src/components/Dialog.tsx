@@ -1,10 +1,36 @@
 import { Button } from '@/components';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { cva, VariantProps } from 'class-variance-authority';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
 
-type Props = {
+const dialogClasses = cva(
+  'relative w-full rounded-lg bg-gray-1 px-4 pt-5 pb-4 text-left shadow-xl sm:m-8 sm:p-6',
+  {
+    variants: {
+      size: {
+        xs: 'sm:max-w-xs',
+        sm: 'sm:max-w-sm',
+        md: 'sm:max-w-md',
+        lg: 'sm:max-w-lg',
+        xl: 'sm:max-w-xl',
+        '2xl': 'sm:max-w-2xl',
+        '3xl': 'sm:max-w-3xl',
+        '4xl': 'sm:max-w-4xl',
+        '5xl': 'sm:max-w-5xl',
+        '6xl': 'sm:max-w-6xl',
+        '7xl': 'sm:max-w-7xl',
+        full: 'sm:max-w-full',
+      },
+    },
+    defaultVariants: {
+      size: 'md',
+    },
+  },
+);
+
+interface Props extends VariantProps<typeof dialogClasses> {
   trigger: React.ReactNode;
   title?: string;
   confirmText?: string;
@@ -12,7 +38,7 @@ type Props = {
   hidden?: boolean;
   open?: boolean;
   onOpenChange?(open: boolean): void;
-};
+}
 
 export default function AlertDialog({
   trigger,
@@ -21,6 +47,7 @@ export default function AlertDialog({
   hidden,
   open,
   onOpenChange,
+  size,
 }: Props) {
   const [_open, _setOpen] = useState(false);
 
@@ -56,7 +83,7 @@ export default function AlertDialog({
               <div className="fixed inset-0 z-10 overflow-y-auto">
                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                   <motion.div
-                    className="relative w-full rounded-lg bg-gray-1 px-4 pt-5 pb-4 text-left shadow-xl sm:my-8 sm:max-w-md sm:p-6"
+                    className={dialogClasses({ size })}
                     initial={{
                       y: 16,
                       opacity: 0,
@@ -75,7 +102,7 @@ export default function AlertDialog({
                       transition: { ease: 'easeIn', duration: 0.1 },
                     }}
                   >
-                    <div className="absolute top-0 right-0 hidden pt-2 pr-2 sm:block">
+                    <div className="absolute top-0 right-0 pt-2 pr-2">
                       <DialogPrimitive.Close asChild>
                         <Button icon={<XMarkIcon />} variant="subtle" color="gray" />
                       </DialogPrimitive.Close>
