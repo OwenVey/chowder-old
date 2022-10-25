@@ -26,8 +26,8 @@ export default function SortableIngredientListItem({ ingredient, onDelete }: Pro
       ref={setNodeRef}
       style={style}
       className={clsx(
-        'flex items-center justify-between rounded-lg bg-gray-1 px-2 py-1 text-sm',
-        isDragging && 'shadow-lg',
+        'z-10 flex items-center justify-between rounded-lg bg-gray-1 px-2 py-1 text-sm',
+        isDragging && 'z-20 shadow-lg',
       )}
     >
       <IngredientComponent ingredient={ingredient} />
