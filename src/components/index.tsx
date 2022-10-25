@@ -3,6 +3,7 @@ export { default as Button } from './Button';
 export { default as Dialog } from './Dialog';
 export * from './Dropdown';
 export * from './Form';
+export * from './IngredientsInput';
 export * from './Inputs';
 export { default as Layout } from './Layout';
 export { default as Link } from './Link';

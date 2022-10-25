@@ -1,4 +1,12 @@
-import { Button, Dialog, Form, FormNumberInput, FormTextArea, FormTextInput } from '@/components';
+import {
+  Button,
+  Dialog,
+  Form,
+  FormNumberInput,
+  FormTextArea,
+  FormTextInput,
+  IngredientsInput,
+} from '@/components';
 import { Recipe } from '@/types/chowder';
 import { trpc } from '@/utils/trpc';
 import { SubmitHandler } from 'react-hook-form';
@@ -18,6 +26,7 @@ export const newRecipeSchema = z.object({
   cookTime: z.number(),
   ingredients: z.array(
     z.object({
+      id: z.string(),
       name: z.string(),
     }),
   ),
@@ -83,9 +92,14 @@ export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
             min={0}
           />
         </div>
+
+        <IngredientsInput />
+
         <FormTextArea<Recipe> label="Notes" name="notes" />
 
-        <Button loading={isLoading}>Submit</Button>
+        <Button type="submit" loading={isLoading}>
+          Submit
+        </Button>
       </Form>
     </Dialog>
   );

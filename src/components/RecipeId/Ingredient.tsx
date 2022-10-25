@@ -7,7 +7,7 @@ type Props = {
 
 export default function ingredient({ ingredient }: Props) {
   return (
-    <li>
+    <div>
       {/* quantity */}
       {ingredient.quantity && (
         <span className="font-bold diagonal-fractions text-primary-10">
@@ -28,6 +28,6 @@ export default function ingredient({ ingredient }: Props) {
 
       {/* note */}
       {ingredient.note && <span className="italic text-gray-9"> {ingredient.note}</span>}
-    </li>
+    </div>
   );
 }

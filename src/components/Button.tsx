@@ -147,6 +147,8 @@ interface Props extends VariantProps<typeof buttonClasses> {
   icon?: React.ReactElement;
   rightIcon?: React.ReactElement;
   tooltip?: string;
+  type?: 'button' | 'submit' | 'reset';
+  size?: 'sm' | 'base';
 }
 
 type ButtonProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<C, Props>;
@@ -168,6 +170,8 @@ export const Button: ButtonComponent = React.forwardRef(
       rightIcon,
       disabled,
       tooltip,
+      type = 'button',
+      size = 'base',
       className,
       ...restProps
     } = props;
@@ -186,8 +190,9 @@ export const Button: ButtonComponent = React.forwardRef(
         ref={ref}
         {...restProps}
         disabled={disabled || loading || false}
+        type={type}
         className={clsx(
-          icon ? 'p-1.5' : 'px-4 py-2',
+          icon ? (size === 'sm' ? 'p-1' : 'p-1.5') : 'px-4 py-2',
           buttonClasses({ variant, color, loading, disabled, class: className }),
         )}
       >
@@ -198,7 +203,13 @@ export const Button: ButtonComponent = React.forwardRef(
         {loading && <Loader className={clsx('h-5 w-5', icon ? 'm-0.5' : '-ml-1 mr-2')} />}
 
         {/* Middle Icon */}
-        {icon ? !loading && cloneAndPassClass(icon, 'h-6 w-6') : children}
+        {icon
+          ? !loading &&
+            cloneAndPassClass(
+              icon,
+              size === 'sm' ? 'h-5 w-5' : size === 'base' ? 'h-6 w-6' : 'h-6 w-6',
+            )
+          : children}
 
         {/* Right Icon */}
         {!loading && cloneAndPassClass(rightIcon, '-mr-1 ml-2 h-5 w-5')}

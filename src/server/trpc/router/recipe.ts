@@ -10,7 +10,7 @@ export const recipeRouter = t.router({
   create: t.procedure.input(newRecipeSchema).mutation(async ({ input, ctx }) => {
     // console.log(ctx.prisma);
     // TODO: create prisma type for Recipe and save to DB
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 1000));
     return input;
   }),
 });
