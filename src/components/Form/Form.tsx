@@ -18,7 +18,7 @@ export default function Form<T extends FieldValues>({
   defaultValues,
   ...restProps
 }: Props<T>) {
-  const { handleSubmit, register, formState } = useForm<T>({
+  const { handleSubmit, reset, register, formState } = useForm<T>({
     resolver: schema ? zodResolver(schema) : undefined,
     defaultValues,
   });
@@ -57,7 +57,7 @@ export default function Form<T extends FieldValues>({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} {...restProps}>
+    <form onSubmit={handleSubmit(onSubmit)} onReset={() => reset()} {...restProps}>
       {recursiveMap(children, registerFormElement)}
       {/* <pre className="text-xs">{JSON.stringify(formState.errors, null, 2)}</pre> */}
     </form>

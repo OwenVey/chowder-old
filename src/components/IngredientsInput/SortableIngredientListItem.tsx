@@ -1,30 +1,55 @@
+import { Button } from '@/components';
 import { Ingredient } from '@/types/chowder';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import IngredientListItem from './IngredientListItem';
+import { Bars3Icon, TrashIcon } from '@heroicons/react/20/solid';
+import clsx from 'clsx';
+import { default as IngredientComponent } from '../RecipeId/Ingredient';
 
 interface Props {
   ingredient: Ingredient;
+  onDelete: (ingredient: Ingredient) => void;
 }
 
-export default function SortableItem({ ingredient }: Props) {
+export default function SortableIngredientListItem({ ingredient, onDelete }: Props) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: ingredient.id,
   });
 
   const style = {
-    opacity: isDragging ? 0.4 : undefined,
-    transform: CSS.Transform.toString(transform),
     transition,
+    transform: CSS.Transform.toString(transform),
   };
 
   return (
-    <IngredientListItem
-      ingredient={ingredient}
+    <div
       ref={setNodeRef}
       style={style}
-      attributes={attributes}
-      listeners={listeners}
-    />
+      className={clsx(
+        'flex items-center justify-between rounded-lg bg-gray-1 px-2 py-1 text-sm',
+        isDragging && 'shadow-lg',
+      )}
+    >
+      <IngredientComponent ingredient={ingredient} />
+
+      <div className="flex items-center">
+        <Button
+          onClick={() => onDelete(ingredient)}
+          icon={<TrashIcon />}
+          variant="subtle"
+          color="gray"
+          size="sm"
+        />
+        <Button
+          {...attributes}
+          {...listeners}
+          className={clsx(isDragging ? 'cursor-grabbing shadow' : 'cursor-grab')}
+          icon={<Bars3Icon />}
+          variant="subtle"
+          color="gray"
+          size="sm"
+        />
+      </div>
+    </div>
   );
 }
