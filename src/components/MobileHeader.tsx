@@ -1,6 +1,6 @@
 import { Logo, MobileSidebar, Search, ThemeToggler } from '@/components';
 import { useSession } from 'next-auth/react';
-import Image from 'next/image';
+import Image from 'next/future/image';
 
 export default function MobileHeader() {
   const { data: session } = useSession();

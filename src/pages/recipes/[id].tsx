@@ -1,9 +1,8 @@
-import { Loader } from '@/components';
+import { Link, Loader } from '@/components';
 import { ActionsHeader, IngredientsSidebar, RecipeDirection } from '@/components/RecipeId';
 import { Recipe } from '@/types/chowder';
 import { trpc } from '@/utils/trpc';
 import { ChevronLeftIcon, ClockIcon, LinkIcon, UsersIcon } from '@heroicons/react/20/solid';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { RecipesPageLayout } from '.';
 

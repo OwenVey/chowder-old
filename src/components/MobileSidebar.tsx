@@ -1,11 +1,10 @@
-import { Logo } from '@/components';
+import { Link, Logo } from '@/components';
 import { isActiveLink } from '@/utils/is-active-link';
 import { navigation, tags } from '@/utils/mocks';
 import { Bars3CenterLeftIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import * as Dialog from '@radix-ui/react-dialog';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
