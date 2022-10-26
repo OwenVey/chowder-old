@@ -1,11 +1,12 @@
-import { Button, Dropdown, DropdownItem, Link, Logo, Search, ThemeToggler } from '@/components';
+import { Button, Dropdown, DropdownItem, Logo, Search, ThemeToggler } from '@/components';
 import { isActiveLink } from '@/utils/is-active-link';
 import { navigation, tags } from '@/utils/mocks';
 import { AdjustmentsHorizontalIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/20/solid';
 import { Cog6ToothIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { signOut, useSession } from 'next-auth/react';
-import Image from 'next/future/image';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function Sidebar() {

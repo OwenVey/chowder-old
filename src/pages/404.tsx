@@ -1,4 +1,5 @@
-import { Link, Logo } from '@/components';
+import { Logo } from '@/components';
+import Link from 'next/link';
 
 export default function Error404() {
   return (

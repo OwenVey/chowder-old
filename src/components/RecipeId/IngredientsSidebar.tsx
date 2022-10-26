@@ -2,7 +2,7 @@ import { Button } from '@/components';
 import { Ingredient } from '@/components/RecipeId';
 import { Recipe } from '@/types/chowder';
 import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/react/20/solid';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { useState } from 'react';
 
 type Props = {
