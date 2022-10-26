@@ -139,7 +139,7 @@ export const recipes: Recipe[] = [
       { id: '5', name: 'Baking Soda', quantity: 1, unit: 'teaspoon' },
       { id: '6', name: 'Salt', note: 'to taste' },
       { id: '7', name: 'All-purpose Flour', quantity: 1.5, unit: 'cup' },
-      { id: '8', name: 'Mini Chocolate Chips', quantity: 1 / 2, unit: 'cup' },
+      { name: 'Mini Chocolate Chips', quantity: 1 / 2, unit: 'cup' },
     ],
     directions: [
       'Preheat oven to 350˚F (180˚C).',
