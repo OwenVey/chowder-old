@@ -44,7 +44,7 @@ export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
   ]);
 
   const onSubmit: SubmitHandler<Recipe> = async (newRecipe) => {
-    console.log({ newRecipe });
+    // console.log({ newRecipe });
 
     const response = await createRecipe(newRecipe);
     // console.log(response);
