@@ -37,7 +37,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.38.0",
-    "react-string-replace": "^1.1.0",
     "superjson": "1.11.0",
     "zod": "^3.19.1"
   },
