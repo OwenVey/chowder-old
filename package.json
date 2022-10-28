@@ -33,6 +33,7 @@
     "next": "12.3.1",
     "next-auth": "~4.15.0",
     "next-themes": "^0.2.1",
+    "parse-ingredient": "^0.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.38.0",

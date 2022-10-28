@@ -89,6 +89,7 @@ const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
         value={value}
         onChange={(event) => handleChange(event.target.value)}
         rightSection={rightSection}
+        inputClass="pr-16"
         min={min}
         max={max}
         step={step}

@@ -50,7 +50,7 @@ export default function AlertDialog({
               />
             </AlertDialogPrimitive.Overlay>
             <AlertDialogPrimitive.Content asChild>
-              <div className="fixed inset-0 z-10 overflow-y-auto">
+              <div className="fixed inset-0 z-10 overflow-y-auto focus:outline-none">
                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                   <motion.div
                     className="w-full rounded-lg bg-gray-1 px-4 pt-5 pb-4 text-left shadow-xl sm:my-8 sm:max-w-md sm:p-6"

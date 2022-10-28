@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { InputHTMLAttributes, ReactElement } from 'react';
-import { DeepPartial, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { Controller, DeepPartial, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { ZodType } from 'zod';
 
 interface Props<T extends FieldValues>
@@ -18,7 +18,7 @@ export default function Form<T extends FieldValues>({
   defaultValues,
   ...restProps
 }: Props<T>) {
-  const { handleSubmit, reset, register, formState } = useForm<T>({
+  const { handleSubmit, reset, register, formState, control } = useForm<T>({
     resolver: schema ? zodResolver(schema) : undefined,
     defaultValues,
   });
@@ -44,22 +44,43 @@ export default function Form<T extends FieldValues>({
   };
 
   const registerFormElement = (child: ReactElement): ReactElement => {
-    return child.props.name
-      ? React.createElement(child.type, {
-          ...{
-            ...child.props,
-            register,
-            key: child.props.name,
-            error: formState.errors[child.props.name]?.message,
-          },
-        })
-      : child;
+    if (child.props.name) {
+      if (child.props.controlled) {
+        return (
+          <Controller
+            control={control}
+            name={child.props.name}
+            render={({
+              field: { onChange, onBlur, value, name, ref },
+              fieldState: { isTouched, isDirty, error },
+            }) =>
+              React.createElement(child.type, {
+                ...child.props,
+                register,
+                onChange,
+                value,
+                key: child.props.name,
+                error: error?.message,
+              })
+            }
+          />
+        );
+      } else {
+        return React.createElement(child.type, {
+          ...child.props,
+          register,
+          key: child.props.name,
+          error: formState.errors[child.props.name]?.message,
+        });
+      }
+    } else {
+      return child;
+    }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} onReset={() => reset()} {...restProps}>
       {recursiveMap(children, registerFormElement)}
-      {/* <pre className="text-xs">{JSON.stringify(formState.errors, null, 2)}</pre> */}
     </form>
   );
 }

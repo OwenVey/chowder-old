@@ -13,7 +13,7 @@ interface Props {
 
 export default function SortableIngredientListItem({ ingredient, onDelete }: Props) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
-    id: ingredient.id,
+    id: ingredient.name,
   });
 
   const style = {

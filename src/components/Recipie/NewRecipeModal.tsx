@@ -7,9 +7,8 @@ import {
   FormTextInput,
   IngredientsInput,
 } from '@/components';
-import { Ingredient, Recipe } from '@/types/chowder';
+import { Recipe } from '@/types/chowder';
 import { trpc } from '@/utils/trpc';
-import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -25,12 +24,16 @@ export const newRecipeSchema = z.object({
   servings: z.number().gte(1, 'Must be at least 1 serving'),
   prepTime: z.number(),
   cookTime: z.number(),
-  ingredients: z.array(
-    z.object({
-      id: z.string(),
-      name: z.string(),
-    }),
-  ),
+  ingredients: z
+    .array(
+      z.object({
+        name: z.string(),
+        quantity: z.number().optional(),
+        unit: z.string().optional(),
+        note: z.string().optional(),
+      }),
+    )
+    .min(2),
   directions: z.array(z.string()),
   photos: z.array(z.string()),
 });
@@ -38,29 +41,22 @@ export const newRecipeSchema = z.object({
 export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
   const { mutateAsync: createRecipe, isLoading } = trpc.recipe.create.useMutation();
 
-  const [ingredients, setIngredients] = useState<Ingredient[]>([
-    { id: '0', name: 'Fettuccine', quantity: 12, unit: 'ounce' },
-    { id: '1', name: 'Bacon', quantity: 4, unit: 'slice' },
-  ]);
-
   const onSubmit: SubmitHandler<Recipe> = async (newRecipe) => {
-    // console.log({ newRecipe });
+    console.log({ newRecipe });
 
     const response = await createRecipe(newRecipe);
-    // console.log(response);
-    // onOpenChange && onOpenChange(false);
+    console.log(response);
+    onOpenChange && onOpenChange(false);
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange} title="New Recipe" trigger={trigger} size="lg">
-      <IngredientsInput name="ingredients" ingredients={ingredients} onChange={setIngredients} />
       <Form<Recipe>
         onSubmit={onSubmit}
         className="flex flex-col gap-4"
         defaultValues={{
           name: '',
           servings: 10,
-
           ingredients: [],
           directions: ['Step one', 'Step two'],
           photos: ['https://vero.cooking/chilli.jpg'],
@@ -84,6 +80,7 @@ export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
             labelNote="(min)"
             name="prepTime"
             showAsterisk
+            clearable
             min={0}
           />
           <FormNumberInput<Recipe>
@@ -96,20 +93,18 @@ export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
           />
         </div>
 
-        {/* <Controller
-        name="MyCheckbox"
-        control={control}
-        // defaultValue={false}
-        // rules={{ required: true }}
-        render={({ field }) => <FormTextArea<Recipe> label="Notes" name="notes" {...field} />}
-      /> */}
+        <IngredientsInput controlled name="ingredients" />
 
         <FormTextArea<Recipe> label="Notes" name="notes" />
 
-        <Button type="reset">Reset</Button>
-        <Button type="submit" loading={isLoading}>
-          Submit
-        </Button>
+        <div className="flex space-x-2">
+          <Button className="w-32" type="reset" variant="default">
+            Reset
+          </Button>
+          <Button className="flex-1" type="submit" loading={isLoading}>
+            Submit
+          </Button>
+        </div>
       </Form>
     </Dialog>
   );
