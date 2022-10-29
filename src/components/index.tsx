@@ -2,6 +2,7 @@ export { default as AlertDialog } from './AlertDialog';
 export { default as Button } from './Button';
 export { default as Dialog } from './Dialog';
 export * from './Dropdown';
+export { default as FileInput } from './FileInput';
 export * from './Form';
 export * from './IngredientsInput';
 export * from './Inputs';

@@ -14,14 +14,14 @@ export default function IngredientsSidebar({ recipe }: Props) {
 
   return (
     <aside className="hidden w-80 flex-col border-l border-gray-6 bg-gray-2 xl:flex">
-      {recipe.photos[0] && (
+      {recipe.photo && (
         <Image
           className="h-48 w-full object-cover"
           width={319}
           height={192}
           quality={100}
           alt="food"
-          src={recipe.photos[0]}
+          src={recipe.photo}
         />
       )}
 

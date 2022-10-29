@@ -10,7 +10,7 @@ export type Recipe = {
   directions: string[];
   notes?: string;
   nutrition?: string;
-  photos: string[];
+  photo?: string;
 };
 
 export type Ingredient = {

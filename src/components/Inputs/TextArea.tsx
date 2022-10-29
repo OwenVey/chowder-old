@@ -10,6 +10,7 @@ export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
   showAsterisk?: boolean;
   error?: string;
   className?: string;
+  fullHeight?: boolean;
 }
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -23,6 +24,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       showAsterisk,
       error,
       className,
+      fullHeight,
       ...restProps
     },
     ref,
@@ -30,30 +32,21 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const id = useId();
 
     return (
-      <div className={className}>
+      <div className={clsx('flex flex-col', className)}>
         {label && (
           <label
             htmlFor={id}
-            className={clsx(
-              'inline-block select-none text-sm font-medium text-gray-11',
-              !description && 'mb-1',
-            )}
+            className={clsx('block select-none space-x-1 text-sm', !description && 'mb-1')}
           >
-            {label}
+            <span className="font-medium text-gray-11">{label}</span>
+            {labelNote && <span className="italic text-gray-9">{labelNote}</span>}
+            {showAsterisk && <span className="text-red-9">*</span>}
           </label>
         )}
-
-        {labelNote && (
-          <label htmlFor={id} className="ml-1 inline-block select-none text-sm italic text-gray-9">
-            {labelNote}
-          </label>
-        )}
-
-        {showAsterisk && label && <span className="text-red-9"> *</span>}
 
         {description && <p className="mb-1 text-xs text-gray-9">{description}</p>}
 
-        <div className="relative rounded-lg shadow-sm">
+        <div className="relative flex-1 rounded-lg shadow-sm">
           {/* Input */}
           <textarea
             {...restProps}
@@ -65,6 +58,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
               'focus:border-primary-9 focus:ring-primary-9',
               error &&
                 'border-red-7 text-red-12 placeholder-red-8 hover:border-red-8 focus:border-red-9 focus:ring-red-9',
+              fullHeight && 'h-full',
             )}
             placeholder={placeholder}
             disabled={disabled}

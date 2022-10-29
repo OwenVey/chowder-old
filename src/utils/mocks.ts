@@ -51,9 +51,8 @@ export const recipes: Recipe[] = [
       'Sprinkle the chicken lightly with salt and pepper and add to the skillet in a single layer. Let cook, undisturbed, until golden brown on the underside, 2 to 3 minutes. Continue to cook, stirring occasionally, until cooked through, about 4 minutes more. Transfer to the plate with the bacon.',
       'Reduce the heat to medium and add the garlic, stirring, until fragrant, about 30 seconds. Add the tomatoes and cream and bring to a simmer, then add the spinach and stir until just wilted. Add the bacon, chicken, fettuccine and Parmesan and toss with tongs until well coated; season to taste with salt and pepper. Sprinkle with basil and serve.',
     ],
-    photos: [
+    photo:
       'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/9/26/0/FNK_Tuscan-Chicken-Skillet_H2_s4x3.jpg.rend.hgtvcom.826.620.suffix/1537973085542.jpeg',
-    ],
   },
   {
     id: '2',
@@ -81,9 +80,8 @@ export const recipes: Recipe[] = [
       'Meanwhile, in a large pot of boiling salted water, cook pasta until al dente according to package directions. Reserve ½ cup pasta water before draining.',
       'To skillet with tomatoes and feta, add cooked pasta, reserved pasta water, and lemon zest (if using) and stir until combined. Garnish with basil.',
     ],
-    photos: [
+    photo:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-210212-feta-pasta-007-ab-1613747029.jpg?crop=0.668xw:1.00xh;0.138xw,0&resize=768:*',
-    ],
   },
   {
     id: '3',
@@ -119,7 +117,7 @@ export const recipes: Recipe[] = [
       'Finally, once the beans are soft, add salt. Simmer for a few more minutes, then drain the excess water and add the beans to the large pot as well.',
       'Season with salt and chili powder if needed. Cover and continue to simmer over low heat for 20 minutes, stirring occasionally.',
     ],
-    photos: ['https://vero.cooking/chilli.jpg'],
+    photo: 'https://vero.cooking/chilli.jpg',
   },
   {
     id: '4',
@@ -149,8 +147,7 @@ export const recipes: Recipe[] = [
       'Cool completely before serving.',
       'Enjoy!',
     ],
-    photos: [
+    photo:
       'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/55ac7efd43d74a6ead6576b4bfb28d7e/FB_Syphus_BananaBread_v3.jpg?resize=600:*&output-format=auto&output-quality=auto',
-    ],
   },
 ];

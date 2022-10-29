@@ -1,24 +1,24 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { InputHTMLAttributes, ReactElement } from 'react';
-import { Controller, DeepPartial, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { ZodType } from 'zod';
+import { Controller, DeepPartial, SubmitHandler, useForm } from 'react-hook-form';
+import { z, ZodTypeAny } from 'zod';
 
-interface Props<T extends FieldValues>
+interface Props<T extends ZodTypeAny>
   extends Omit<InputHTMLAttributes<HTMLFormElement>, 'onSubmit'> {
   children: ReactElement[];
-  onSubmit: SubmitHandler<T>;
-  schema?: ZodType<Omit<T, 'id'>>;
-  defaultValues?: DeepPartial<T>;
+  onSubmit: SubmitHandler<z.infer<T>>;
+  schema: T;
+  defaultValues?: DeepPartial<z.infer<T>>;
 }
 
-export default function Form<T extends FieldValues>({
+export default function Form<T extends ZodTypeAny>({
   children,
   onSubmit,
   schema,
   defaultValues,
   ...restProps
 }: Props<T>) {
-  const { handleSubmit, reset, register, formState, control } = useForm<T>({
+  const { handleSubmit, reset, register, formState, control } = useForm<z.infer<T>>({
     resolver: schema ? zodResolver(schema) : undefined,
     defaultValues,
   });
@@ -81,6 +81,7 @@ export default function Form<T extends FieldValues>({
   return (
     <form onSubmit={handleSubmit(onSubmit)} onReset={() => reset()} {...restProps}>
       {recursiveMap(children, registerFormElement)}
+      {/* {JSON.stringify(formState.errors, null, 2)} */}
     </form>
   );
 }

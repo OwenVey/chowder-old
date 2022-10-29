@@ -18,13 +18,13 @@ export default function RecipeCard({ recipe, isActive }: Props) {
         isActive ? 'bg-primary-9' : 'hover:bg-gray-4 active:bg-gray-5',
       )}
     >
-      {recipe.photos[0] && (
+      {recipe.photo && (
         <Image
           className="h-24 w-24 rounded-lg object-cover"
           width={96}
           height={96}
           alt="food"
-          src={recipe.photos[0]}
+          src={recipe.photo}
         />
       )}
       <div className="ml-2 flex flex-col justify-center gap-1">
