@@ -11,7 +11,6 @@ interface Props {
   label?: string;
   labelNote?: string;
   description?: string;
-  disabled?: boolean;
   showAsterisk?: boolean;
   error?: string;
   onChange?: (file: File) => void;
@@ -23,7 +22,6 @@ export default function FileInput({
   label,
   labelNote,
   description,
-  disabled,
   showAsterisk,
   error,
   onChange,
@@ -31,7 +29,6 @@ export default function FileInput({
   const id = useId();
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    console.log({ acceptedFiles });
     const acceptedFile = acceptedFiles[0];
 
     if (acceptedFile) {
@@ -100,6 +97,7 @@ export default function FileInput({
           className={clsx(
             'flex h-44 w-44 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-white shadow-sm hover:border-gray-8 hover:bg-gray-1 focus:outline-none focus-visible:border-primary-9 dark:bg-gray-1 dark:hover:bg-gray-2',
             isDragActive ? 'border-primary-9' : 'border-gray-7',
+            error && 'border-red-7 hover:border-red-8',
           )}
         >
           <input id={id} {...getInputProps()} />
@@ -115,7 +113,8 @@ export default function FileInput({
           <span className="text-sm text-gray-9">or drag and drop here</span>
         </div>
       )}
-      <p>{error}</p>
+      {/* Error Message */}
+      {error && <p className="mt-1 text-xs text-red-9">{error}</p>}
     </div>
   );
 }

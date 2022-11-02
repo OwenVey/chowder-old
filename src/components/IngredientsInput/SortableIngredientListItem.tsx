@@ -1,5 +1,5 @@
 import { Button } from '@/components';
-import { Ingredient } from '@/types/chowder';
+import { NewIngredient } from '@/types/chowder';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Bars3Icon, TrashIcon } from '@heroicons/react/20/solid';
@@ -7,8 +7,8 @@ import clsx from 'clsx';
 import { default as IngredientComponent } from '../RecipeId/Ingredient';
 
 interface Props {
-  ingredient: Ingredient;
-  onDelete: (ingredient: Ingredient) => void;
+  ingredient: NewIngredient;
+  onDelete: (ingredient: NewIngredient) => void;
 }
 
 export default function SortableIngredientListItem({ ingredient, onDelete }: Props) {

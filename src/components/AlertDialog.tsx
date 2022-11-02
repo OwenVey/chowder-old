@@ -11,6 +11,10 @@ type Props = {
   description?: string;
   confirmText?: string;
   variant?: AlertDialogVariant;
+  onConfirm: () => void;
+  open?: boolean;
+  onOpenChange?(open: boolean): void;
+  loading?: boolean;
 };
 
 const variantToColor: Record<AlertDialogVariant, 'primary' | 'yellow' | 'red' | 'green' | 'blue'> =
@@ -28,15 +32,29 @@ export default function AlertDialog({
   description,
   confirmText = 'Confirm',
   variant = 'primary',
+  onConfirm,
+  open,
+  onOpenChange,
+  loading,
 }: Props) {
-  const [open, setOpen] = useState(false);
+  const [_open, _setOpen] = useState(false);
+
+  const isOpen = () => {
+    return open === undefined ? _open : open;
+  };
 
   return (
-    <AlertDialogPrimitive.Root open={open} onOpenChange={setOpen}>
+    <AlertDialogPrimitive.Root
+      open={isOpen()}
+      onOpenChange={(isOpen) => {
+        onOpenChange !== undefined && onOpenChange(isOpen);
+        _setOpen(isOpen);
+      }}
+    >
       <AlertDialogPrimitive.Trigger asChild>{trigger}</AlertDialogPrimitive.Trigger>
 
       <AnimatePresence>
-        {open ? (
+        {isOpen() ? (
           <AlertDialogPrimitive.Portal forceMount>
             <AlertDialogPrimitive.Overlay asChild>
               <motion.div
@@ -82,9 +100,11 @@ export default function AlertDialog({
                       <AlertDialogPrimitive.Cancel asChild>
                         <Button variant="default">Cancel</Button>
                       </AlertDialogPrimitive.Cancel>
-                      <AlertDialogPrimitive.Action asChild>
-                        <Button color={variantToColor[variant]}>{confirmText}</Button>
-                      </AlertDialogPrimitive.Action>
+                      {/* <AlertDialogPrimitive.Action asChild> */}
+                      <Button onClick={onConfirm} loading={loading} color={variantToColor[variant]}>
+                        {confirmText}
+                      </Button>
+                      {/* </AlertDialogPrimitive.Action> */}
                     </div>
                   </motion.div>
                 </div>

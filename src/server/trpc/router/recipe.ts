@@ -1,16 +1,44 @@
 import { newRecipeSchema } from '@/components/Recipie/NewRecipeModal';
-import { recipes } from '@/utils/mocks';
 import { z } from 'zod';
-import { t } from '../trpc';
+import { authedProcedure, t } from '../trpc';
 
 export const recipeRouter = t.router({
-  getById: t.procedure.input(z.string()).query(({ input: id }) => {
-    return recipes.find((recipe) => recipe.id === id);
+  create: authedProcedure.input(newRecipeSchema).mutation(async ({ input, ctx }) => {
+    const newRecipe = await ctx.prisma.recipe.create({
+      data: {
+        ...input,
+        ingredients: { createMany: { data: input.ingredients } },
+        photo: 'https://vero.cooking/chilli.jpg',
+        userId: ctx.session.user.id,
+      },
+    });
+    return newRecipe;
   }),
-  create: t.procedure.input(newRecipeSchema).mutation(async ({ input, ctx }) => {
-    // console.log(ctx.prisma);
-    // TODO: create prisma type for Recipe and save to DB
-    await new Promise((r) => setTimeout(r, 1000));
-    return input;
-  }),
+  getAll: authedProcedure.query(({ ctx }) =>
+    ctx.prisma.recipe.findMany({
+      where: {
+        userId: ctx.session.user.id,
+      },
+      include: {
+        ingredients: true,
+      },
+    }),
+  ),
+  getById: authedProcedure.input(z.string()).query(({ input: id, ctx }) =>
+    ctx.prisma.recipe.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        ingredients: true,
+      },
+    }),
+  ),
+  deleteById: authedProcedure.input(z.string()).mutation(({ input: id, ctx }) =>
+    ctx.prisma.recipe.delete({
+      where: {
+        id,
+      },
+    }),
+  ),
 });

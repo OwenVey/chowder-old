@@ -8,10 +8,6 @@ datasource db {
     shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model Example {
-    id String @id @default(cuid())
-}
-
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
@@ -47,6 +43,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    recipes       Recipe[]
 }
 
 model VerificationToken {
@@ -55,4 +52,30 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Recipe {
+    id          String       @id @default(cuid())
+    name        String
+    link        String?
+    description String?
+    servings    Int
+    prepTime    Int
+    cookTime    Int
+    ingredients Ingredient[]
+    directions  String[]
+    notes       String
+    photo       String?
+    user        User         @relation(fields: [userId], references: [id], onDelete: NoAction)
+    userId      String
+}
+
+model Ingredient {
+    id       String  @id @default(cuid())
+    name     String
+    quantity Int?
+    unit     String?
+    note     String?
+    recipe   Recipe  @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+    recipeId String
 }

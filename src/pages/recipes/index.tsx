@@ -1,6 +1,7 @@
 import { Button, Dropdown, DropdownItem } from '@/components';
 import { NewRecipeModal, RecipeCard } from '@/components/Recipie';
-import { recipes } from '@/utils/mocks';
+// import { recipes } from '@/utils/mocks';
+import { trpc } from '@/utils/trpc';
 import { ChevronDownIcon, GlobeAltIcon, PencilSquareIcon } from '@heroicons/react/20/solid';
 import {
   DocumentPlusIcon,
@@ -20,6 +21,8 @@ function RecipesLayout({ children }: Props) {
   const { query } = useRouter();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  const { data: recipes, isLoading } = trpc.recipe.getAll.useQuery();
+
   return (
     <div className="relative z-0 flex flex-1 overflow-hidden">
       {/* Start first column (hidden on smaller screens) */}
@@ -32,7 +35,7 @@ function RecipesLayout({ children }: Props) {
         <div className="flex h-16 items-center justify-between border-b border-gray-6 bg-gray-3 px-4">
           <div>
             <h1 className="font-medium text-gray-12">Recipes</h1>
-            <div className="text-sm text-gray-11">5 Recipes</div>
+            <div className="text-sm text-gray-11">{recipes?.length} Recipes</div>
           </div>
           <div className="flex items-center gap-3">
             <Button icon={<MagnifyingGlassIcon />} variant="subtle" color="gray" tooltip="Search" />
@@ -68,9 +71,15 @@ function RecipesLayout({ children }: Props) {
           </div>
         </div>
         <div className="min-h-0 flex-1 space-y-1 overflow-y-auto p-3">
-          {recipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
-          ))}
+          {isLoading ? (
+            'Loading'
+          ) : recipes ? (
+            recipes.map((recipe) => (
+              <RecipeCard key={recipe.id} recipe={recipe} isActive={query.id === recipe.id} />
+            ))
+          ) : (
+            <div>No recipes found</div>
+          )}
         </div>
       </aside>
       {/* End first column */}

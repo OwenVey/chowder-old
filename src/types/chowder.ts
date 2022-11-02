@@ -1,21 +1,7 @@
-export type Recipe = {
-  id: string;
-  name: string;
-  link?: string;
-  description?: string;
-  servings: number;
-  prepTime: number;
-  cookTime: number;
-  ingredients: Ingredient[];
-  directions: string[];
-  notes?: string;
-  nutrition?: string;
-  photo?: string;
-};
+import { Ingredient, Prisma } from '@prisma/client';
 
-export type Ingredient = {
-  name: string;
-  quantity?: number;
-  unit?: string;
-  note?: string;
-};
+export type RecipeWithIngredients = Prisma.RecipeGetPayload<{
+  include: { ingredients: true };
+}>;
+
+export type NewIngredient = Omit<Ingredient, 'id' | 'recipeId'>;

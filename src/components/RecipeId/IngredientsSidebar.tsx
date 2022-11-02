@@ -1,12 +1,12 @@
 import { Button } from '@/components';
 import { Ingredient } from '@/components/RecipeId';
-import { Recipe } from '@/types/chowder';
+import { RecipeWithIngredients } from '@/types/chowder';
 import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/react/20/solid';
 import Image from 'next/future/image';
 import { useState } from 'react';
 
 type Props = {
-  recipe: Recipe;
+  recipe: RecipeWithIngredients;
 };
 
 export default function IngredientsSidebar({ recipe }: Props) {
@@ -52,7 +52,7 @@ export default function IngredientsSidebar({ recipe }: Props) {
                 ...ingredient,
                 quantity: ingredient.quantity
                   ? ingredient.quantity * (servings / recipe.servings)
-                  : undefined,
+                  : null,
               }}
             />
           ))}

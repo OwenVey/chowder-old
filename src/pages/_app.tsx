@@ -3,6 +3,7 @@ import { Layout } from '@/components';
 import '@/styles/globals.css';
 import { trpc } from '@/utils/trpc';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { NextPage } from 'next';
 import type { Session } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
@@ -25,6 +26,7 @@ function App({ Component, pageProps, session }: AppPropsWithLayout) {
     <SessionProvider session={session}>
       <ThemeProvider attribute="class" disableTransitionOnChange>
         <TooltipProvider>
+          <ReactQueryDevtools initialIsOpen={false} />
           <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
         </TooltipProvider>
       </ThemeProvider>

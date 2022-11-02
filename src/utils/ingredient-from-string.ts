@@ -1,4 +1,4 @@
-import { Ingredient } from '@/types/chowder';
+import { NewIngredient } from '@/types/chowder';
 import { parseIngredient, UnitOfMeasureDefinitions, unitsOfMeasure } from 'parse-ingredient';
 
 const additionalUOMs: UnitOfMeasureDefinitions = {
@@ -17,18 +17,18 @@ export const allUnitsOfMeasure = {
 export default function ingredientFromString(
   ingredientString: string,
   note?: string,
-): Ingredient | null {
+): NewIngredient | null {
   const ing = parseIngredient(ingredientString, { additionalUOMs })[0];
 
   if (ing === undefined) {
     return null;
   }
 
-  const ingredient: Ingredient = {
+  const ingredient: NewIngredient = {
     name: ing.description,
-    quantity: ing.quantity || ing.quantity2 || undefined,
-    unit: ing.unitOfMeasureID || ing.unitOfMeasure || undefined,
-    note,
+    quantity: ing.quantity || ing.quantity2 || null,
+    unit: ing.unitOfMeasureID || ing.unitOfMeasure || null,
+    note: note || null,
   };
 
   return ingredient;

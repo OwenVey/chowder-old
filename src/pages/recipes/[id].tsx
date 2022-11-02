@@ -1,16 +1,11 @@
 import { Link, Loader } from '@/components';
 import { ActionsHeader, IngredientsSidebar, RecipeDirection } from '@/components/RecipeId';
-import { Recipe } from '@/types/chowder';
 import { trpc } from '@/utils/trpc';
 import { ChevronLeftIcon, ClockIcon, LinkIcon, UsersIcon } from '@heroicons/react/20/solid';
 import { useRouter } from 'next/router';
 import { RecipesPageLayout } from '.';
 
-type Props = {
-  recipe: Recipe;
-};
-
-export default function RecipePage({}: Props) {
+export default function RecipePage() {
   const { query } = useRouter();
   const { data: recipe, isLoading } = trpc.recipe.getById.useQuery(query.id as string);
 
@@ -106,7 +101,7 @@ export default function RecipePage({}: Props) {
                   key={direction}
                   stepNumber={index + 1}
                   direction={direction}
-                  recipe={recipe}
+                  ingredients={recipe.ingredients}
                 />
               ))}
             </ol>

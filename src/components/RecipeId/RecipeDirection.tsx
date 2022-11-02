@@ -1,26 +1,26 @@
 import { Popover } from '@/components';
-import { Ingredient } from '@/components/RecipeId';
-import { Recipe } from '@/types/chowder';
+import { Ingredient as IngredientComponent } from '@/components/RecipeId';
+import { Ingredient } from '@prisma/client';
 import { Fragment } from 'react';
 
 type Props = {
   stepNumber: number;
   direction: string;
-  recipe: Recipe;
+  ingredients: Ingredient[];
 };
 
-export default function RecipeDirection({ stepNumber, direction, recipe }: Props) {
+export default function RecipeDirection({ stepNumber, direction, ingredients }: Props) {
   const highlightFilters = ['and', 'or'];
 
   const words = direction.split(/([\s,]+)/).map((text) => {
-    const ingredients = recipe.ingredients.filter((ingredient) =>
+    const filteredIngredients = ingredients.filter((ingredient) =>
       ingredient.name
         .split(' ')
         .map((i) => i.toLowerCase())
         .filter((i) => !highlightFilters.includes(i))
         .includes(text.toLowerCase()),
     );
-    return { text, ingredients };
+    return { text, ingredients: filteredIngredients };
   });
 
   return (
@@ -44,7 +44,7 @@ export default function RecipeDirection({ stepNumber, direction, recipe }: Props
             >
               <ul>
                 {word.ingredients.map((ingredient) => (
-                  <Ingredient key={ingredient.name} ingredient={ingredient} />
+                  <IngredientComponent key={ingredient.name} ingredient={ingredient} />
                 ))}
               </ul>
             </Popover>

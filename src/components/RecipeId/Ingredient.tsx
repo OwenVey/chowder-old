@@ -1,8 +1,8 @@
-import { Ingredient } from '@/types/chowder';
+import { NewIngredient } from '@/types/chowder';
 import numberToFraction from '@/utils/number-to-fraction';
 
 type Props = {
-  ingredient: Ingredient;
+  ingredient: NewIngredient;
 };
 
 export default function ingredient({ ingredient }: Props) {

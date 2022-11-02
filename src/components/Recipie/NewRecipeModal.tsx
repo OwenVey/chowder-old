@@ -8,8 +8,9 @@ import {
   FormTextInput,
   IngredientsInput,
 } from '@/components';
-import { Recipe } from '@/types/chowder';
 import { trpc } from '@/utils/trpc';
+import { Recipe } from '@prisma/client';
+import { useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 
 type Props = {
@@ -20,7 +21,7 @@ type Props = {
 
 export const newRecipeSchema = z.object({
   name: z.string().min(1, 'Cannot be empty'),
-  description: z.string().optional(),
+  description: z.string(),
   servings: z.number().gte(1, 'Must be at least 1 serving'),
   prepTime: z.number(),
   cookTime: z.number(),
@@ -33,27 +34,33 @@ export const newRecipeSchema = z.object({
     }),
   ),
   directions: z.array(z.string()),
-  photo:
-    typeof window === 'undefined' // this is required if your app rendered in server side, otherwise just remove the ternary condition
-      ? z.undefined()
-      : z.instanceof(File),
+  photo: typeof window === 'undefined' ? z.undefined() : z.instanceof(File).optional(),
+  notes: z.string(),
 });
 
 export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
-  const { mutateAsync: createRecipe, isLoading } = trpc.recipe.create.useMutation();
+  const queryClient = useQueryClient();
+
+  const { mutateAsync: createRecipe, isLoading } = trpc.recipe.create.useMutation({
+    onSuccess: (newRecipe) => {
+      const previousRecipes = queryClient.getQueryData<Recipe[]>([['recipe', 'getAll']]);
+
+      if (previousRecipes) {
+        queryClient.setQueryData([['recipe', 'getAll']], [...previousRecipes, newRecipe]);
+      }
+    },
+  });
 
   const onSubmit = async (newRecipe: z.infer<typeof newRecipeSchema>) => {
-    console.log({ newRecipe });
-
-    // const response = await createRecipe(newRecipe);
-    // console.log(response);
-    // onOpenChange && onOpenChange(false);
+    await createRecipe(newRecipe);
+    onOpenChange && onOpenChange(false);
   };
+  console.log({ queryClient });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange} title="New Recipe" trigger={trigger} size="xl">
       <Form<typeof newRecipeSchema>
-        onSubmit={(e) => e}
+        onSubmit={onSubmit}
         className="flex flex-col gap-4"
         defaultValues={{
           name: '',

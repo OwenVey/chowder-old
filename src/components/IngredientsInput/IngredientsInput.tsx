@@ -1,5 +1,5 @@
 import { Button, TextInput } from '@/components';
-import { Ingredient } from '@/types/chowder';
+import { NewIngredient } from '@/types/chowder';
 import ingredientFromString from '@/utils/ingredient-from-string';
 import {
   closestCenter,
@@ -24,8 +24,8 @@ import { SortableIngredientListItem } from '.';
 interface Props {
   name?: string;
   controlled?: boolean;
-  value?: Ingredient[];
-  onChange?: (ingredients: Ingredient[]) => void;
+  value?: NewIngredient[];
+  onChange?: (ingredients: NewIngredient[]) => void;
   error?: string;
 }
 
@@ -78,8 +78,8 @@ export default function IngredientsInput({
     newIngredientInputRef.current?.focus();
   };
 
-  const deleteIngredient = (ingredient: Ingredient) => {
-    const newIngredients: Ingredient[] = ingredients.filter((i) => i.name !== ingredient.name);
+  const deleteIngredient = (ingredient: NewIngredient) => {
+    const newIngredients = ingredients.filter((i) => i.name !== ingredient.name);
     onChange(newIngredients);
   };
 
