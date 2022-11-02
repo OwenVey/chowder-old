@@ -1,6 +1,7 @@
 import {
   Button,
   Dialog,
+  DirectionsInput,
   FileInput,
   Form,
   FormNumberInput,
@@ -63,10 +64,9 @@ export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
         onSubmit={onSubmit}
         className="flex flex-col gap-4"
         defaultValues={{
-          name: '',
-          servings: 10,
+          servings: 1,
           ingredients: [],
-          directions: ['Step one', 'Step two'],
+          directions: [],
           // photo: 'https://vero.cooking/chilli.jpg',
         }}
         schema={newRecipeSchema}
@@ -109,6 +109,8 @@ export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
         </div>
 
         <IngredientsInput controlled name="ingredients" />
+
+        <DirectionsInput controlled name="directions" />
 
         <FormTextArea<Recipe> label="Notes" name="notes" />
 
