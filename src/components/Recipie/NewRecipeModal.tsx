@@ -36,7 +36,7 @@ export const newRecipeSchema = z.object({
   ),
   directions: z.array(z.string()),
   photo: typeof window === 'undefined' ? z.undefined() : z.instanceof(File).optional(),
-  notes: z.string(),
+  note: z.string().optional(),
 });
 
 export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
@@ -112,7 +112,7 @@ export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
 
         <DirectionsInput controlled name="directions" />
 
-        <FormTextArea<Recipe> label="Notes" name="notes" />
+        <FormTextArea<Recipe> label="Note" name="note" />
 
         <div className="flex space-x-2">
           <Button className="w-32" type="reset" variant="default">

@@ -64,7 +64,7 @@ model Recipe {
     cookTime    Int
     ingredients Ingredient[]
     directions  String[]
-    notes       String
+    note        String?
     photo       String?
     user        User         @relation(fields: [userId], references: [id], onDelete: NoAction)
     userId      String
@@ -73,7 +73,7 @@ model Recipe {
 model Ingredient {
     id       String  @id @default(cuid())
     name     String
-    quantity Int?
+    quantity Float?
     unit     String?
     note     String?
     recipe   Recipe  @relation(fields: [recipeId], references: [id], onDelete: Cascade)
