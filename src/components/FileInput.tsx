@@ -1,7 +1,7 @@
 import { PhotoIcon } from '@heroicons/react/20/solid';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { useCallback, useEffect, useId, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 

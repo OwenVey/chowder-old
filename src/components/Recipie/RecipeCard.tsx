@@ -1,8 +1,8 @@
-import { Link } from '@/components';
 import { RecipeWithIngredients } from '@/types/chowder';
 import { ClockIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
-import Image from 'next/future/image';
+import Image from 'next/image';
+import Link from 'next/link';
 
 type Props = {
   recipe: RecipeWithIngredients;
