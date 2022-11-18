@@ -56,7 +56,6 @@ export default function NewRecipeModal({ trigger, open, onOpenChange }: Props) {
     await createRecipe(newRecipe);
     onOpenChange && onOpenChange(false);
   };
-  console.log({ queryClient });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange} title="New Recipe" trigger={trigger} size="xl">
