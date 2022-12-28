@@ -28,18 +28,21 @@ export default function FileInput({
 }: Props) {
   const id = useId();
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    const acceptedFile = acceptedFiles[0];
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      const acceptedFile = acceptedFiles[0];
 
-    if (acceptedFile) {
-      const previewFile = Object.assign(acceptedFile, {
-        preview: URL.createObjectURL(acceptedFile),
-      });
+      if (acceptedFile) {
+        const previewFile = Object.assign(acceptedFile, {
+          preview: URL.createObjectURL(acceptedFile),
+        });
 
-      setPreviewFile(previewFile);
-      onChange && onChange(acceptedFile);
-    }
-  }, []);
+        setPreviewFile(previewFile);
+        onChange && onChange(acceptedFile);
+      }
+    },
+    [onChange],
+  );
 
   const [previewFile, setPreviewFile] = useState<PreviewFile | null>(null);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({

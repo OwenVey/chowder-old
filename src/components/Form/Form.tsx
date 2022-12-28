@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { InputHTMLAttributes, ReactElement } from 'react';
 import React from 'react';
-import type { DeepPartial, SubmitHandler} from 'react-hook-form';
+import type { DeepPartial, SubmitHandler } from 'react-hook-form';
 import { Controller, useForm } from 'react-hook-form';
 import type { z, ZodTypeAny } from 'zod';
 
@@ -52,10 +52,7 @@ export default function Form<T extends ZodTypeAny>({
           <Controller
             control={control}
             name={child.props.name}
-            render={({
-              field: { onChange, onBlur, value, name, ref },
-              fieldState: { isTouched, isDirty, error },
-            }) =>
+            render={({ field: { onChange, value }, fieldState: { error } }) =>
               React.createElement(child.type, {
                 ...child.props,
                 register,

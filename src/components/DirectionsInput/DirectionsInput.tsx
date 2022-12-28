@@ -1,6 +1,5 @@
 import { Button, TextInput } from '@/components';
-import type {
-  DragEndEvent} from '@dnd-kit/core';
+import type { DragEndEvent } from '@dnd-kit/core';
 import {
   closestCenter,
   DndContext,
@@ -117,7 +116,7 @@ export default function DirectionsInput({
               }}
               error={error}
               clearable
-              onClear={(e) => {
+              onClear={() => {
                 setNewDirection('');
                 setShowInput(false);
               }}

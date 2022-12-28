@@ -1,8 +1,7 @@
 import { Button, TextInput } from '@/components';
 import type { NewIngredient } from '@/types/chowder';
 import ingredientFromString from '@/utils/ingredient-from-string';
-import type {
-  DragEndEvent} from '@dnd-kit/core';
+import type { DragEndEvent } from '@dnd-kit/core';
 import {
   closestCenter,
   DndContext,
@@ -131,7 +130,7 @@ export default function IngredientsInput({
               }}
               error={error}
               clearable
-              onClear={(e) => {
+              onClear={() => {
                 setNewIngredient('');
                 setNote('');
                 setShowInput(false);
