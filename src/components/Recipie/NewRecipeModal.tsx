@@ -10,7 +10,7 @@ import {
   IngredientsInput,
 } from '@/components';
 import { trpc } from '@/utils/trpc';
-import { Recipe } from '@prisma/client';
+import type { Recipe } from '@prisma/client';
 import { useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 

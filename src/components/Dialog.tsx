@@ -1,7 +1,8 @@
 import { Button } from '@/components';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { cva, VariantProps } from 'class-variance-authority';
+import type { VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
 

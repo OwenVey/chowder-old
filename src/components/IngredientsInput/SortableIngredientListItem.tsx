@@ -1,5 +1,5 @@
 import { Button } from '@/components';
-import { NewIngredient } from '@/types/chowder';
+import type { NewIngredient } from '@/types/chowder';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Bars3Icon, TrashIcon } from '@heroicons/react/20/solid';

@@ -1,9 +1,9 @@
 import { newRecipeSchema } from '@/components/Recipie/NewRecipeModal';
 import { z } from 'zod';
-import { authedProcedure, t } from '../trpc';
+import { protectedProcedure, router } from '../trpc';
 
-export const recipeRouter = t.router({
-  create: authedProcedure.input(newRecipeSchema).mutation(async ({ input, ctx }) => {
+export const recipeRouter = router({
+  create: protectedProcedure.input(newRecipeSchema).mutation(async ({ input, ctx }) => {
     const newRecipe = await ctx.prisma.recipe.create({
       data: {
         ...input,
@@ -14,7 +14,7 @@ export const recipeRouter = t.router({
     });
     return newRecipe;
   }),
-  getAll: authedProcedure.query(({ ctx }) =>
+  getAll: protectedProcedure.query(({ ctx }) =>
     ctx.prisma.recipe.findMany({
       where: {
         userId: ctx.session.user.id,
@@ -24,7 +24,7 @@ export const recipeRouter = t.router({
       },
     }),
   ),
-  getById: authedProcedure.input(z.string()).query(({ input: id, ctx }) =>
+  getById: protectedProcedure.input(z.string()).query(({ input: id, ctx }) =>
     ctx.prisma.recipe.findUnique({
       where: {
         id,
@@ -34,7 +34,7 @@ export const recipeRouter = t.router({
       },
     }),
   ),
-  deleteById: authedProcedure.input(z.string()).mutation(({ input: id, ctx }) =>
+  deleteById: protectedProcedure.input(z.string()).mutation(({ input: id, ctx }) =>
     ctx.prisma.recipe.delete({
       where: {
         id,

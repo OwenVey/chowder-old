@@ -1,5 +1,6 @@
-import { NewIngredient } from '@/types/chowder';
-import { parseIngredient, UnitOfMeasureDefinitions, unitsOfMeasure } from 'parse-ingredient';
+import type { NewIngredient } from '@/types/chowder';
+import type { UnitOfMeasureDefinitions} from 'parse-ingredient';
+import { parseIngredient, unitsOfMeasure } from 'parse-ingredient';
 
 const additionalUOMs: UnitOfMeasureDefinitions = {
   slice: {

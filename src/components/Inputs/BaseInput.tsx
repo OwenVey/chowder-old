@@ -1,6 +1,7 @@
 import { XCircleIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
-import { forwardRef, InputHTMLAttributes, useId, useImperativeHandle, useRef } from 'react';
+import type { InputHTMLAttributes} from 'react';
+import { forwardRef, useId, useImperativeHandle, useRef } from 'react';
 
 export interface BaseInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;

@@ -1,6 +1,6 @@
 import { Popover } from '@/components';
 import { Ingredient as IngredientComponent } from '@/components/RecipeId';
-import { Ingredient } from '@prisma/client';
+import type { Ingredient } from '@prisma/client';
 import { Fragment } from 'react';
 
 type Props = {

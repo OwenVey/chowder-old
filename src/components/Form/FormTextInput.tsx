@@ -1,6 +1,6 @@
 import { TextInput } from '@/components';
-import { FieldPath, FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
-import { TextInputProps } from '../Inputs/TextInput';
+import type { FieldPath, FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
+import type { TextInputProps } from '../Inputs/TextInput';
 
 interface Props<T extends FieldValues> extends TextInputProps {
   name: FieldPath<T>;

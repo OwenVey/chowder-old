@@ -1,7 +1,8 @@
 /* eslint-disable react/display-name */
 import { Loader, Tooltip } from '@/components';
-import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@/types/polymorphic';
-import { cva, VariantProps } from 'class-variance-authority';
+import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@/types/polymorphic';
+import type { VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import clsx from 'clsx';
 import React from 'react';
 

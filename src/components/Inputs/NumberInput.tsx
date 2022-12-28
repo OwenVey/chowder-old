@@ -1,6 +1,7 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid';
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
-import BaseInput, { BaseInputProps } from './BaseInput';
+import type { BaseInputProps } from './BaseInput';
+import BaseInput from './BaseInput';
 
 export interface NumberInputProps extends BaseInputProps {
   defaultValue?: number;

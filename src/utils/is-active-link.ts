@@ -1,4 +1,4 @@
-import { NextRouter } from 'next/router';
+import type { NextRouter } from 'next/router';
 
 export const isActiveLink = (router: NextRouter, href: string) => {
   if (router.pathname === href) return true;

@@ -1,6 +1,6 @@
 import { Button } from '@/components';
 import { Ingredient } from '@/components/RecipeId';
-import { RecipeWithIngredients } from '@/types/chowder';
+import type { RecipeWithIngredients } from '@/types/chowder';
 import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 import { useState } from 'react';

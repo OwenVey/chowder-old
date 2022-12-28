@@ -1,10 +1,11 @@
 import { Button, TextInput } from '@/components';
-import { NewIngredient } from '@/types/chowder';
+import type { NewIngredient } from '@/types/chowder';
 import ingredientFromString from '@/utils/ingredient-from-string';
+import type {
+  DragEndEvent} from '@dnd-kit/core';
 import {
   closestCenter,
   DndContext,
-  DragEndEvent,
   KeyboardSensor,
   MeasuringStrategy,
   PointerSensor,

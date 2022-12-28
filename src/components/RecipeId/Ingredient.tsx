@@ -1,4 +1,4 @@
-import { NewIngredient } from '@/types/chowder';
+import type { NewIngredient } from '@/types/chowder';
 import numberToFraction from '@/utils/number-to-fraction';
 
 type Props = {

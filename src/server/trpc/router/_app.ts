@@ -1,9 +1,8 @@
-// src/server/trpc/router/index.ts
-import { t } from '../trpc';
+import { router } from '../trpc';
 import { authRouter } from './auth';
 import { recipeRouter } from './recipe';
 
-export const appRouter = t.router({
+export const appRouter = router({
   auth: authRouter,
   recipe: recipeRouter,
 });

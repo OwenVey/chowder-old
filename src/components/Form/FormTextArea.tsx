@@ -1,5 +1,6 @@
-import { FieldPath, FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
-import TextArea, { TextAreaProps } from '../Inputs/TextArea';
+import type { FieldPath, FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
+import type { TextAreaProps } from '../Inputs/TextArea';
+import TextArea from '../Inputs/TextArea';
 
 interface Props<T extends FieldValues> extends TextAreaProps {
   name: FieldPath<T>;

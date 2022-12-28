@@ -1,6 +1,6 @@
 import { NumberInput } from '@/components';
-import { FieldPath, FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
-import { NumberInputProps } from '../Inputs/NumberInput';
+import type { FieldPath, FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
+import type { NumberInputProps } from '../Inputs/NumberInput';
 
 interface Props<T extends FieldValues> extends NumberInputProps {
   name: FieldPath<T>;

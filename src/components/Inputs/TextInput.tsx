@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
-import BaseInput, { BaseInputProps } from './BaseInput';
+import type { BaseInputProps } from './BaseInput';
+import BaseInput from './BaseInput';
 
 export interface TextInputProps extends BaseInputProps {
   test?: boolean;

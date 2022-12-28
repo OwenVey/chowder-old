@@ -1,4 +1,4 @@
-import { RecipeWithIngredients } from '@/types/chowder';
+import type { RecipeWithIngredients } from '@/types/chowder';
 import { ClockIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 import Image from 'next/image';

@@ -1,4 +1,4 @@
-import { Ingredient, Prisma } from '@prisma/client';
+import type { Ingredient, Prisma } from '@prisma/client';
 
 export type RecipeWithIngredients = Prisma.RecipeGetPayload<{
   include: { ingredients: true };

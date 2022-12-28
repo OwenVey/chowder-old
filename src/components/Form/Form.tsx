@@ -1,7 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { InputHTMLAttributes, ReactElement } from 'react';
-import { Controller, DeepPartial, SubmitHandler, useForm } from 'react-hook-form';
-import { z, ZodTypeAny } from 'zod';
+import type { InputHTMLAttributes, ReactElement } from 'react';
+import React from 'react';
+import type { DeepPartial, SubmitHandler} from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
+import type { z, ZodTypeAny } from 'zod';
 
 interface Props<T extends ZodTypeAny>
   extends Omit<InputHTMLAttributes<HTMLFormElement>, 'onSubmit'> {

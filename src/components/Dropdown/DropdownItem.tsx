@@ -1,5 +1,6 @@
 import { DropdownMenuItem } from '@radix-ui/react-dropdown-menu';
-import { ForwardedRef, forwardRef } from 'react';
+import type { ForwardedRef} from 'react';
+import { forwardRef } from 'react';
 
 // Redecalare forwardRef
 declare module 'react' {

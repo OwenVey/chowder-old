@@ -8,7 +8,7 @@ import {
   ShoppingCartIcon,
   TrashIcon,
 } from '@heroicons/react/24/outline';
-import { Recipe } from '@prisma/client';
+import type { Recipe } from '@prisma/client';
 import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
