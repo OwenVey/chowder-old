@@ -19,7 +19,12 @@
     "paths": {
       "@/*": ["src/*"],
       "#/public/*": ["public/*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
@@ -28,7 +33,8 @@
     "**/*.cjs",
     "**/*.mjs",
     "radix-plugin.ts",
-    "radix-plugin.cts"
+    "radix-plugin.cts",
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

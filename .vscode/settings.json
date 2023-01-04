@@ -18,5 +18,7 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
-  "tailwindCSS.experimental.classRegex": [["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]]
+  "tailwindCSS.experimental.classRegex": [["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]],
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "workbench.editor.labelFormat": "short"
 }
