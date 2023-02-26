@@ -22,7 +22,7 @@ export default function FormNumberInput<T extends FieldValues>({
 }: Props<T>) {
   return register ? (
     <NumberInput
-      {...register(name, { ...options, valueAsNumber: true })}
+      {...register(name, { ...options })}
       min={min}
       max={max}
       step={step}

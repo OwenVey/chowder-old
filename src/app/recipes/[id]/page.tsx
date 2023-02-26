@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { IngredientsSidebar, RecipeDirection } from './components';
 
 async function getRecipe(id: string) {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
+  console.log('TEST');
   return prisma.recipe.findUnique({
     where: {
       id,
