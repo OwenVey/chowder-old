@@ -10,15 +10,11 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "[shellscript][dotenv]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsdk": "node_modules\\typescript\\lib",
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
     "source.organizeImports": true
   },
   "tailwindCSS.experimental.classRegex": [["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]],
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "workbench.editor.labelFormat": "short"
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
